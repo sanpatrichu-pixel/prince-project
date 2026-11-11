@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Academic Task Planner | Prince Daniel - MIVA Open University</title>
+  <meta name="description" content="Interactive Academic Task Planner system engineered with Vanilla JavaScript, dynamic DOM manipulation, and LocalStorage for Prince Daniel (2025/C/CYB/1333).">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Institutional Top Header -->
+  <header class="inst-bar">
+    <div class="wrap inst-bar-content">
+      <div class="inst-badges">
+        <span class="inst-badge-item">🏛️ MIVA Open University</span>
+        <span>&bull;</span>
+        <span>School of Computing &amp; Applied Sciences</span>
+      </div>
+      <div class="inst-badges">
+        <span>Student: <b>Prince Daniel</b></span>
+        <span>&bull;</span>
+        <span class="inst-badge-item">Matric: <b>2025/C/CYB/1333</b></span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Navigation Bar -->
+  <nav class="header-nav" aria-label="Main Navigation">
+    <div class="wrap header-content">
+      <a href="index.html" class="brand-logo" aria-label="Prince Daniel Home">
+        <img src="miva-logo.png" alt="MIVA Open University Logo">
+        <div class="brand-text">
+          <span class="brand-name">PRINCE DANIEL</span>
+          <span class="brand-sub">Cybersecurity &bull; Web &amp; Mobile</span>
+        </div>
+      </a>
+
+      <ul class="desktop-links">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="about.html" class="nav-link">About Me</a></li>
+        <li><a href="projects.html" class="nav-link">Projects</a></li>
+        <li><a href="planner.html" class="nav-link active">Academic Planner</a></li>
+        <li><a href="contact.html" class="nav-link">Contact</a></li>
+        <li><a href="report.html" class="nav-link" style="color:var(--navy-mid); font-weight:700;">📄 Project Report</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button type="button" class="theme-toggle-btn" id="themeToggleBtn" aria-label="Toggle Dark / Light Mode" title="Toggle Theme">
+          🌙
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Planner Header Section -->
+  <section class="sec" style="padding-top:40px; padding-bottom:24px;">
+    <div class="wrap">
+      <div class="sec-head" style="text-align:left;">
+        <div class="sec-eyebrow">COURSEWORK PRODUCTIVITY SYSTEM</div>
+        <h1 class="sec-title" style="font-size:32px;">Interactive Academic Task Planner</h1>
+        <p class="sec-desc" style="margin:0;">
+          A client-side task scheduling application built with pure Vanilla JavaScript (ES6+). Organizes semester lab submissions, 
+          milestone deadlines, and exam revisions with real-time statistics and persistent browser storage via <code>localStorage</code>.
+        </p>
+      </div>
+
+      <!-- Live Analytics Bar & Progress Track -->
+      <div class="planner-stats-bar">
+        <div class="planner-metrics">
+          <div class="metric-box">
+            <div class="metric-num" id="totalTasksCount">4</div>
+            <div class="metric-label">Total Milestones</div>
+          </div>
+          <div class="metric-box">
+            <div class="metric-num" id="completedTasksCount" style="color:var(--badge-green-text);">1</div>
+            <div class="metric-label">Completed Tasks</div>
+          </div>
+          <div class="metric-box">
+            <div class="metric-num" id="pendingTasksCount" style="color:var(--navy-mid);">3</div>
+            <div class="metric-label">Pending Deadlines</div>
+          </div>
+        </div>
+
+        <div class="progress-track-wrapper">
+          <div class="progress-track-label">
+            <span>Semester Completion Progress</span>
+            <span id="progressPercent" style="color:var(--navy-mid);">25%</span>
+          </div>
+          <div class="progress-track-bar">
+            <div class="progress-track-fill" id="progressFill" style="width:25%;"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Add New Task Form Card -->
+      <div class="planner-form-card">
+        <h3 style="font-size:18px; font-weight:800; color:var(--text-main); margin-bottom:16px;">
+          ➕ Schedule New Academic Milestone
+        </h3>
+
+        <form id="taskForm" novalidate>
+          <div class="planner-form-grid">
+            <!-- Task Title -->
+            <div class="form-group">
+              <label for="taskTitle">Task Description / Objective *</label>
+              <input type="text" id="taskTitle" class="form-control" placeholder="e.g. Build Flutter UI for MIVA Mobile Lab" required>
+              <div class="error-feedback">Please enter a milestone description.</div>
+            </div>
+
+            <!-- Course Code -->
+            <div class="form-group">
+              <label for="taskCourse">Enrolled Course *</label>
+              <select id="taskCourse" class="form-control" required>
+                <option value="" disabled selected>Select Course</option>
+                <option value="CSC 106">CSC 106 (Web Technologies)</option>
+                <option value="COS 102">COS 102 (Problem Solving)</option>
+                <option value="MIVA-COS 111">MIVA-COS 111 (Cert Lab I)</option>
+                <option value="MTH 102">MTH 102 (Mathematics II)</option>
+                <option value="PHY 102">PHY 102 (Physics II)</option>
+                <option value="PHY 108">PHY 108 (Physics Practical)</option>
+                <option value="GST 112">GST 112 (Peoples &amp; Culture)</option>
+                <option value="GST 122">GST 122 (Communication II)</option>
+                <option value="GENERAL">General Milestone</option>
+              </select>
+              <div class="error-feedback">Please select a course code.</div>
+            </div>
+
+            <!-- Target Due Date -->
+            <div class="form-group">
+              <label for="taskDueDate">Target Due Date *</label>
+              <input type="date" id="taskDueDate" class="form-control" required>
+              <div class="error-feedback">Please select a valid date.</div>
+            </div>
+
+            <!-- Priority -->
+            <div class="form-group">
+              <label for="taskPriority">Priority Level *</label>
+              <select id="taskPriority" class="form-control">
+                <option value="high">🔴 High Priority</option>
+                <option value="medium" selected>🟡 Medium Priority</option>
+                <option value="low">🟢 Low Priority</option>
+              </select>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="btn-primary" style="height:42px; border-radius:var(--radius-sm); white-space:nowrap;">
+              + Add Milestone
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Task List Header & Filters -->
+      <div class="planner-filter-bar">
+        <h3 style="font-size:18px; font-weight:800; color:var(--text-main); margin:0;">
+          📋 Active Coursework Schedule
+        </h3>
+
+        <div style="display:flex; align-items:center; gap:12px;">
+          <div class="filter-btn-group">
+            <button type="button" class="filter-btn active" data-filter="all">All</button>
+            <button type="button" class="filter-btn" data-filter="pending">Pending</button>
+            <button type="button" class="filter-btn" data-filter="completed">Completed</button>
+          </div>
+
+          <button type="button" id="resetTasksBtn" class="btn-secondary" style="padding:6px 12px; font-size:12px;" title="Reset Default Tasks">
+            🔄 Reset
+          </button>
+        </div>
+      </div>
+
+      <!-- Dynamic Task Items Container -->
+      <div class="task-list" id="taskListContainer">
+        <!-- Rendered dynamically by js/planner.js -->
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Main Footer -->
+  <footer class="main-footer">
+    <div class="wrap">
+      <div class="footer-grid">
+        <div>
+          <div class="brand-logo" style="margin-bottom:12px;">
+            <img src="miva-logo.png" alt="MIVA Logo" style="height:32px;">
+            <span style="color:#FFFFFF; font-weight:800; font-size:16px;">PRINCE DANIEL</span>
+          </div>
+          <p>
+            Student Academic Portfolio &amp; Task Management System designed and implemented for COS 106: Introduction to Web Technologies.
+          </p>
+          <div style="margin-top:12px; font-size:12px; line-height:1.7;">
+            <div>Matriculation: <b>2025/C/CYB/1333</b></div>
+            <div>Student ID: <b>301897306</b></div>
+            <div>Department: <b>Cybersecurity (100 Level)</b></div>
+          </div>
+        </div>
+
+        <div>
+          <h5>NAVIGATION</h5>
+          <ul>
+            <li><a href="index.html">Home Page</a></li>
+            <li><a href="about.html">About Me</a></li>
+            <li><a href="projects.html">Projects Showcase</a></li>
+            <li><a href="planner.html">Academic Planner</a></li>
+            <li><a href="contact.html">Contact Form</a></li>
+            <li><a href="report.html">Assessment Report</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h5>ACADEMICS</h5>
+          <ul>
+            <li>COS 106 (Web Tech)</li>
+            <li>COS 102 (Problem Solving)</li>
+            <li>MIVA-COS 111 (Cert I)</li>
+            <li>MTH 102 (Mathematics II)</li>
+            <li><a href="planner.html">Study Planner System</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h5>CONTACT &amp; CAMPUS</h5>
+          <ul>
+            <li>MIVA Open University</li>
+            <li>Abuja FCT, Nigeria</li>
+            <li><a href="mailto:p.daniel7306@miva.edu.ng">p.daniel7306@miva.edu.ng</a></li>
+            <li>+234 811 676 1295</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>&copy; 2025 MIVA Open University &bull; All Rights Reserved. Term Project Assessment.</span>
+        <span>Engineered by <b>Prince Daniel</b> &bull; Target: 20/20 Marks</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating Mobile App Bottom Bar -->
+  <nav class="mobile-bottom-nav" aria-label="Mobile Bottom Navigation">
+    <a href="index.html" class="bottom-nav-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+      <span>Home</span>
+    </a>
+    <a href="about.html" class="bottom-nav-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="7" r="4"></circle><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path></svg>
+      <span>About</span>
+    </a>
+    <a href="projects.html" class="bottom-nav-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+      <span>Projects</span>
+    </a>
+    <a href="planner.html" class="bottom-nav-item active">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+      <span>Planner</span>
+    </a>
+    <a href="contact.html" class="bottom-nav-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+      <span>Contact</span>
+    </a>
+  </nav>
+
+  <script src="js/main.js"></script>
+  <script src="js/planner.js"></script>
+</body>
+</html>
