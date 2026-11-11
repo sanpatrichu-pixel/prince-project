@@ -6,16 +6,16 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-  // Theme Manager (Dark / Light)
+  // Theme Manager (Default: Royal Dark Mode, toggleable to Light Mode)
   const themeSwitchBtn = document.getElementById('themeSwitchTrigger');
-  const storedTheme = localStorage.getItem('edutrack_theme_mode') || 'light';
+  const storedTheme = localStorage.getItem('edutrack_theme_mode') || 'dark';
 
-  if (storedTheme === 'dark') {
-    document.body.classList.add('dark-mode');
-    if (themeSwitchBtn) themeSwitchBtn.textContent = '\u2600\uFE0F';
-  } else {
+  if (storedTheme === 'light') {
     document.body.classList.remove('dark-mode');
     if (themeSwitchBtn) themeSwitchBtn.textContent = '\uD83C\uDF19';
+  } else {
+    document.body.classList.add('dark-mode');
+    if (themeSwitchBtn) themeSwitchBtn.textContent = '\u2600\uFE0F';
   }
 
   if (themeSwitchBtn) {

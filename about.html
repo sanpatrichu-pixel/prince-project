@@ -11,13 +11,16 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
     rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=2">
+  <link rel="stylesheet" href="style.css?v=3">
   <style>
     .pd-bio-split {
       display: grid;
       grid-template-columns: 280px 1fr;
       gap: 36px;
       align-items: center;
+    }
+    .pd-bio-split > * {
+      min-width: 0;
     }
 
     .pd-skill-track {
@@ -118,7 +121,7 @@
   </style>
 </head>
 
-<body>
+<body class="dark-mode">
 
   <!-- Institutional Top Header -->
   <header class="pd-inst-strip">
@@ -157,16 +160,15 @@
             Project Report</a></li>
       </ul>
 
-      <button type="button" class="pd-theme-btn" id="themeSwitchTrigger" aria-label="Toggle Royal Dark Theme"
+      <button type="button" class="pd-theme-btn" id="themeSwitchTrigger" aria-label="Toggle Light / Dark Theme"
         title="Switch Theme">
-        &#x1F319;
+        &#x2600;&#xFE0F;
       </button>
     </div>
   </nav>
 
   <!-- Biography Summary Section -->
-  <section class="pd-sec"
-    style="padding-top:40px; background:linear-gradient(180deg, rgba(224, 242, 254, 0.45) 0%, rgba(248, 250, 252, 0) 100%);">
+  <section class="pd-sec pd-hero-sec" style="padding-top:40px;">
     <div class="pd-wrap">
       <div class="pd-bio-split">
 
@@ -331,7 +333,7 @@
   <!-- Technical Competencies & Career Roadmap -->
   <section class="pd-sec" style="background:var(--pd-card-subtle);">
     <div class="pd-wrap">
-      <div style="display:grid; grid-template-columns:1fr 1fr; gap:36px;">
+      <div class="pd-two-col" style="gap:36px;">
 
         <!-- Left: Technical Skills -->
         <div>
@@ -486,7 +488,7 @@
           players.</p>
       </div>
 
-      <div style="display:grid; grid-template-columns:1fr 1fr; gap:22px;">
+      <div class="pd-two-col" style="gap:22px;">
         <div class="pd-media-panel">
           <h4 style="font-size:16px; font-weight:800; color:var(--pd-text-head);">&#x1F399;&#xFE0F; Audio Greeting</h4>
           <p style="font-size:13px; color:var(--pd-text-subtle); margin:0;">
@@ -561,12 +563,14 @@
         </div>
 
         <div>
-          <h5>CONTACT &amp; CAMPUS</h5>
+          <h5>CONTACT &amp; LINKS</h5>
           <ul>
             <li>MIVA Open University</li>
             <li>Abuja FCT, Nigeria</li>
             <li><a href="mailto:p.daniel7306@miva.edu.ng">p.daniel7306@miva.edu.ng</a></li>
             <li>+234 811 676 1295</li>
+            <li><a href="https://prince-project-f0zc.onrender.com/" target="_blank" rel="noopener noreferrer">&#x1F310; Live Render Website</a></li>
+            <li><a href="https://github.com/sanpatrichu-pixel/prince-project" target="_blank" rel="noopener noreferrer">&#x1F4BB; GitHub Repository</a></li>
           </ul>
         </div>
       </div>

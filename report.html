@@ -404,6 +404,42 @@
       border-top: 1px solid #64748B;
     }
 
+    .rep-table-wrap {
+      width: 100%;
+      overflow-x: auto;
+      margin-bottom: 12px;
+    }
+
+    /* Mobile Responsive Overrides */
+    @media (max-width: 768px) {
+      body { padding: 10px; }
+      .rep-container { padding: 18px 16px; }
+      .rep-screen-bar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+        padding: 14px 16px;
+      }
+      .rep-screen-bar > div:first-child { flex-wrap: wrap; }
+      .rep-screen-bar > div:last-child { width: 100%; flex-wrap: wrap; }
+      .rep-screen-btn { flex: 1 1 auto; justify-content: center; }
+      .rep-cover { padding: 18px 16px; }
+      .rep-inst-row { flex-direction: column; align-items: flex-start; }
+      .rep-hero-row { flex-direction: column; align-items: flex-start; gap: 14px; }
+      .rep-cover-title { font-size: 17.5px; }
+      .rep-meta-grid { grid-template-columns: repeat(2, 1fr); }
+      .rep-meta-span-2 { grid-column: span 2; }
+      .rep-feature-grid { grid-template-columns: 1fr; }
+      .rep-shot-grid { grid-template-columns: 1fr; }
+      .rep-sign-row { flex-direction: column; align-items: flex-start; gap: 10px; }
+      .rep-sign-row > div:last-child { text-align: left !important; }
+      .rep-code-title { flex-direction: column; gap: 4px; }
+    }
+    @media (max-width: 480px) {
+      .rep-meta-grid { grid-template-columns: 1fr; }
+      .rep-meta-span-2 { grid-column: span 1; }
+    }
+
     /* Print Styles */
     @media print {
       body {
@@ -533,6 +569,14 @@
           <b>Technical Specialization</b>
           <span>Web &amp; Cross-Platform Mobile</span>
         </div>
+        <div class="rep-meta-item rep-meta-span-2" style="grid-column: span 2;">
+          <b>Live Deployed Website (Render)</b>
+          <span><a href="https://prince-project-f0zc.onrender.com/" target="_blank" rel="noopener noreferrer" style="color:#1D4ED8; text-decoration:underline; word-break:break-all;">https://prince-project-f0zc.onrender.com/</a></span>
+        </div>
+        <div class="rep-meta-item rep-meta-span-2" style="grid-column: span 2;">
+          <b>GitHub Source Repository</b>
+          <span><a href="https://github.com/sanpatrichu-pixel/prince-project" target="_blank" rel="noopener noreferrer" style="color:#1D4ED8; text-decoration:underline; word-break:break-all;">https://github.com/sanpatrichu-pixel/prince-project</a></span>
+        </div>
       </div>
     </div>
 
@@ -547,6 +591,7 @@
         Each document fulfills distinct pedagogical objectives without relying on heavyweight single-page frameworks:
       </p>
 
+      <div class="rep-table-wrap">
       <table class="rep-table">
         <thead>
           <tr>
@@ -583,6 +628,7 @@
           </tr>
         </tbody>
       </table>
+      </div>
     </section>
 
     <!-- Dossier 2: Technical Projects Portfolio Overview -->
@@ -771,6 +817,7 @@ function removeMilestone(recordId) {
         <h3>System Feature &amp; Technical Implementation Matrix</h3>
       </div>
 
+      <div class="rep-table-wrap">
       <table class="rep-table">
         <thead>
           <tr>
@@ -822,6 +869,7 @@ function removeMilestone(recordId) {
           </tr>
         </tbody>
       </table>
+      </div>
     </section>
 
     <div class="page-break"></div>

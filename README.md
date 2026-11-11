@@ -12,11 +12,13 @@
 - **Institution:** MIVA Open University, Abuja, Nigeria
 - **Email:** `p.daniel7306@miva.edu.ng`
 - **Phone:** `+234 811 676 1295`
+- **Live Website (Render):** [https://prince-project-f0zc.onrender.com/](https://prince-project-f0zc.onrender.com/)
+- **GitHub Repository:** [https://github.com/sanpatrichu-pixel/prince-project](https://github.com/sanpatrichu-pixel/prince-project)
 
 ---
 
 ## 🌟 Project Overview
-This project is an accessible, multi-page responsive academic portfolio and interactive student task management platform engineered using pure **HTML5**, **CSS3**, and **Vanilla JavaScript (ES6+)**. The design features a bespoke **Royal Navy Blue** theme (`#071324`, `#1D4ED8`, `#38BDF8`) reflecting modern software craftsmanship across web technologies and cross-platform mobile application development (Flutter/Dart).
+This project is a fully mobile-responsive, multi-page academic portfolio and interactive student task management platform engineered using pure **HTML5**, **CSS3**, and **Vanilla JavaScript (ES6+)**. It launches in **Royal Navy Dark Mode** by default (`#071324`, `#1D4ED8`, `#38BDF8`) with a toggleable Light Mode switcher, reflecting modern software craftsmanship across web technologies and cross-platform mobile application development (Flutter/Dart).
 
 ---
 
@@ -77,11 +79,10 @@ This project is an accessible, multi-page responsive academic portfolio and inte
 
 ---
 
-## ⚡ How to Deploy on Render (Free Static Site)
-1. Push this repository to a new repository on your GitHub account (e.g. `prince-daniel-portfolio`).
-2. Log in to [dashboard.render.com](https://dashboard.render.com/).
-3. Click **New +** &rarr; select **Static Site**.
-4. Connect your new GitHub repository.
-5. Set Build Command: *(leave blank)*.
-6. Set Publish Directory: `.` *(or leave blank)*.
-7. Click **Create Static Site** to get your live SSL URL.
+## ⚡ Render Static Site Deployment
+- **Live Deployment URL:** [https://prince-project-f0zc.onrender.com/](https://prince-project-f0zc.onrender.com/)
+- **Source Repository:** [https://github.com/sanpatrichu-pixel/prince-project](https://github.com/sanpatrichu-pixel/prince-project)
+
+1. Push updates to the `main` branch of `sanpatrichu-pixel/prince-project`.
+2. Render automatically uses [`render.yaml`](render.yaml) (`runtime: static`, `staticPublishPath: .`).
+3. Or manually configure on [dashboard.render.com](https://dashboard.render.com/): Build Command *(blank)*, Publish Directory `.`.
