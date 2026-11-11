@@ -1,25 +1,25 @@
 /**
- * COS 106: Introduction to Web Technologies - Term Project
- * Student: PRINCE DANIEL
- * Matric No: 2025/C/CYB/1333 | Degree: B.Sc. Cybersecurity
- * File: js/projects.js - Project Showcase Filtering & Interactive Simulation
+ * COS 106: Introduction to Web Technologies - Practical Term Project
+ * Student: PRINCE DANIEL | Matric: 2025/C/CYB/1333
+ * Department of Cybersecurity | MIVA Open University
+ * File: js/projects.js - Project Showcase Filter & Interactive Sandbox Simulation
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-  // Category Filter
-  const filterBtns = document.querySelectorAll('.project-filter-btn');
-  const projectCards = document.querySelectorAll('.project-card');
+  // Category Filtering
+  const filterPills = document.querySelectorAll('.pd-filter-pill');
+  const projectCards = document.querySelectorAll('.pd-project-box');
 
-  filterBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      filterBtns.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
+  filterPills.forEach(pill => {
+    pill.addEventListener('click', () => {
+      filterPills.forEach(p => p.classList.remove('active'));
+      pill.classList.add('active');
 
-      const filter = btn.getAttribute('data-filter') || 'all';
+      const targetGroup = pill.getAttribute('data-group') || 'all';
 
       projectCards.forEach(card => {
-        const category = card.getAttribute('data-category') || '';
-        if (filter === 'all' || category === filter) {
+        const itemGroup = card.getAttribute('data-group') || '';
+        if (targetGroup === 'all' || itemGroup === targetGroup) {
           card.style.display = 'flex';
         } else {
           card.style.display = 'none';
@@ -28,32 +28,32 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Demo Modal System
-  const demoBtns = document.querySelectorAll('.btn-project-demo');
-  const demoModal = document.getElementById('projectDemoModal');
-  const closeDemoModal = document.getElementById('closeDemoModal');
+  // Project Interactive Demo Modal
+  const demoButtons = document.querySelectorAll('.pd-demo-trigger');
+  const modalCover = document.getElementById('sandboxModal');
+  const dismissBtn = document.getElementById('closeSandboxTrigger');
 
-  if (closeDemoModal && demoModal) {
-    closeDemoModal.addEventListener('click', () => {
-      demoModal.style.display = 'none';
+  if (dismissBtn && modalCover) {
+    dismissBtn.addEventListener('click', () => {
+      modalCover.style.display = 'none';
     });
   }
 
-  demoBtns.forEach(btn => {
+  demoButtons.forEach(btn => {
     btn.addEventListener('click', () => {
-      const title = btn.getAttribute('data-title') || 'Project Demonstration';
-      const tech = btn.getAttribute('data-tech') || 'Web & Mobile';
-      const desc = btn.getAttribute('data-desc') || 'Project interactive simulation.';
+      const heading = btn.getAttribute('data-name') || 'Project Inspection';
+      const stack = btn.getAttribute('data-stack') || 'Mobile & Web';
+      const details = btn.getAttribute('data-details') || 'Interactive system simulation.';
 
-      const titleEl = document.getElementById('demoModalTitle');
-      const techEl = document.getElementById('demoModalTech');
-      const descEl = document.getElementById('demoModalDesc');
+      const titleEl = document.getElementById('sandboxTitle');
+      const techEl = document.getElementById('sandboxStack');
+      const descEl = document.getElementById('sandboxDetails');
 
-      if (titleEl) titleEl.textContent = title;
-      if (techEl) techEl.textContent = tech;
-      if (descEl) descEl.textContent = desc;
+      if (titleEl) titleEl.textContent = heading;
+      if (techEl) techEl.textContent = stack;
+      if (descEl) descEl.textContent = details;
 
-      if (demoModal) demoModal.style.display = 'flex';
+      if (modalCover) modalCover.style.display = 'flex';
     });
   });
 });

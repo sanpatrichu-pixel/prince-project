@@ -3,3 +3,4 @@ services:
     name: prince-miva-portfolio
     env: static
     staticPublishPath: .
+

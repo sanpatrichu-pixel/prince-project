@@ -1,77 +1,78 @@
 /**
- * COS 106: Introduction to Web Technologies - Term Project
- * Student: PRINCE DANIEL
- * Matric No: 2025/C/CYB/1333 | Degree: B.Sc. Cybersecurity
- * File: js/main.js - Global Site Interactions & Theme Engine
+ * COS 106: Introduction to Web Technologies - Practical Term Project
+ * Student: PRINCE DANIEL | Matric: 2025/C/CYB/1333
+ * Department of Cybersecurity | MIVA Open University
+ * File: js/main.js - Global Dynamic UI & State Engine
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-  // Theme Switching (Dark / Light) with LocalStorage
-  const themeToggleBtn = document.getElementById('themeToggleBtn');
-  const currentTheme = localStorage.getItem('prince_portfolio_theme') || 'light';
+  // Theme Manager (Dark / Light)
+  const themeSwitchBtn = document.getElementById('themeSwitchTrigger');
+  const storedTheme = localStorage.getItem('edutrack_theme_mode') || 'light';
 
-  if (currentTheme === 'dark') {
+  if (storedTheme === 'dark') {
     document.body.classList.add('dark-mode');
-    if (themeToggleBtn) themeToggleBtn.textContent = '☀️';
+    if (themeSwitchBtn) themeSwitchBtn.textContent = '☀️';
   } else {
     document.body.classList.remove('dark-mode');
-    if (themeToggleBtn) themeToggleBtn.textContent = '🌙';
+    if (themeSwitchBtn) themeSwitchBtn.textContent = '🌙';
   }
 
-  if (themeToggleBtn) {
-    themeToggleBtn.addEventListener('click', () => {
+  if (themeSwitchBtn) {
+    themeSwitchBtn.addEventListener('click', () => {
       document.body.classList.toggle('dark-mode');
       const isDark = document.body.classList.contains('dark-mode');
-      themeToggleBtn.textContent = isDark ? '☀️' : '🌙';
-      localStorage.setItem('prince_portfolio_theme', isDark ? 'dark' : 'light');
-      window.showToast(isDark ? 'Dark Mode Enabled 🌙' : 'Light Mode Enabled ☀️', 'info');
+      themeSwitchBtn.textContent = isDark ? '☀️' : '🌙';
+      localStorage.setItem('edutrack_theme_mode', isDark ? 'dark' : 'light');
+      if (window.displayToast) {
+        window.displayToast(isDark ? 'Royal Dark Theme Activated 🌙' : 'Clean Light Theme Activated ☀️', 'info');
+      }
     });
   }
 
-  // Toast System
-  window.showToast = function(message, type = 'info') {
-    let container = document.querySelector('.toast-container');
-    if (!container) {
-      container = document.createElement('div');
-      container.className = 'toast-container';
-      document.body.appendChild(container);
+  // Toast Notification Hub
+  window.displayToast = function(msg, alertType = 'info') {
+    let toastShelf = document.querySelector('.pd-toast-shelf');
+    if (!toastShelf) {
+      toastShelf = document.createElement('div');
+      toastShelf.className = 'pd-toast-shelf';
+      toastShelf.style.cssText = 'position:fixed; bottom:75px; right:20px; z-index:99999; display:flex; flex-direction:column; gap:8px;';
+      document.body.appendChild(toastShelf);
     }
 
-    const toast = document.createElement('div');
-    toast.className = `toast ${type}`;
+    const toastCard = document.createElement('div');
+    toastCard.style.cssText = 'background:#071324; color:#FFFFFF; padding:10px 16px; border-radius:6px; font-size:13px; font-weight:700; box-shadow:0 6px 18px rgba(0,0,0,0.3); border-left:4px solid #1D4ED8; display:flex; align-items:center; gap:8px; transition:all 0.3s;';
     
-    let icon = 'ℹ️';
-    if (type === 'success') icon = '✅';
-    if (type === 'danger') icon = '⚠️';
+    if (alertType === 'success') toastCard.style.borderLeftColor = '#0284C7';
+    if (alertType === 'danger') toastCard.style.borderLeftColor = '#DC2626';
 
-    toast.innerHTML = `<span>${icon}</span> <span>${message}</span>`;
-    container.appendChild(toast);
+    toastCard.innerHTML = `<span>ℹ️</span> <span>${msg}</span>`;
+    toastShelf.appendChild(toastCard);
 
     setTimeout(() => {
-      toast.style.opacity = '0';
-      toast.style.transform = 'translateX(100%)';
-      toast.style.transition = 'all 0.3s ease';
-      setTimeout(() => toast.remove(), 300);
-    }, 3500);
+      toastCard.style.opacity = '0';
+      toastCard.style.transform = 'translateY(10px)';
+      setTimeout(() => toastCard.remove(), 300);
+    }, 3200);
   };
 
-  // Skill Bar Animation Observer
-  const skillBars = document.querySelectorAll('.skill-progress-fill');
-  if (skillBars.length > 0 && 'IntersectionObserver' in window) {
+  // Skill Bar Observer
+  const skillMeters = document.querySelectorAll('.pd-skill-fill');
+  if (skillMeters.length > 0 && 'IntersectionObserver' in window) {
     const observer = new IntersectionObserver((entries, obs) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          const targetWidth = entry.target.getAttribute('data-level') || '75%';
-          entry.target.style.width = targetWidth;
+          const targetCapacity = entry.target.getAttribute('data-capacity') || '75%';
+          entry.target.style.width = targetCapacity;
           obs.unobserve(entry.target);
         }
       });
     }, { threshold: 0.2 });
 
-    skillBars.forEach(bar => observer.observe(bar));
+    skillMeters.forEach(m => observer.observe(m));
   } else {
-    skillBars.forEach(bar => {
-      bar.style.width = bar.getAttribute('data-level') || '75%';
+    skillMeters.forEach(m => {
+      m.style.width = m.getAttribute('data-capacity') || '75%';
     });
   }
 });

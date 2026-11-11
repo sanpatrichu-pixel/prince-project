@@ -1,291 +1,289 @@
 /**
- * COS 106: Introduction to Web Technologies - Term Project
- * Student: PRINCE DANIEL
- * Matric No: 2025/C/CYB/1333 | Degree: B.Sc. Cybersecurity
- * File: js/planner.js - Academic Task Planner Engine
+ * COS 106: Introduction to Web Technologies - Practical Term Project
+ * Student: PRINCE DANIEL | Matric: 2025/C/CYB/1333
+ * Department of Cybersecurity | MIVA Open University
+ * File: js/planner.js - EduTrack Milestone Management Engine
  */
 
 (function() {
   'use strict';
 
-  const STORAGE_KEY = 'miva_tasks_prince_daniel';
+  const STORAGE_KEY = 'edutrack_prince_2025';
 
-  // Sample tasks preloaded for Prince Daniel's 100L registered coursework
-  const DEFAULT_TASKS = [
+  // Seed tasks preloaded for Prince Daniel's registered curriculum
+  const SEED_MILESTONES = [
     {
-      id: 'task-1',
-      title: 'Complete COS 106 Practical Term Assessment Website & Report',
+      id: 'mile-1',
+      title: 'Submit COS 106 Web Technology Term Project & Report',
       course: 'CSC 106',
-      dueDate: '2026-11-15',
-      priority: 'high',
-      completed: true,
-      createdAt: Date.now() - 86400000
+      targetDate: '2026-11-15',
+      urgency: 'high',
+      done: true,
+      timestamp: Date.now() - 86400000
     },
     {
-      id: 'task-2',
-      title: 'Design Wireframes & State Management Architecture in Flutter',
+      id: 'mile-2',
+      title: 'Build UniRide Flutter Cross-Platform Route Architecture',
       course: 'MIVA-COS 111',
-      dueDate: '2026-11-18',
-      priority: 'high',
-      completed: false,
-      createdAt: Date.now() - 43200000
+      targetDate: '2026-11-18',
+      urgency: 'high',
+      done: false,
+      timestamp: Date.now() - 43200000
     },
     {
-      id: 'task-3',
-      title: 'Complete COS 102 Algorithm Flowcharts & Pseudocode Exercises',
+      id: 'mile-3',
+      title: 'Design DevPulse Student Community Responsive Forum Grid',
       course: 'COS 102',
-      dueDate: '2026-11-20',
-      priority: 'medium',
-      completed: false,
-      createdAt: Date.now() - 21600000
+      targetDate: '2026-11-20',
+      urgency: 'medium',
+      done: false,
+      timestamp: Date.now() - 21600000
     },
     {
-      id: 'task-4',
-      title: 'Practice MTH 102 Matrix Operations & Linear System Equations',
+      id: 'mile-4',
+      title: 'Solve MTH 102 Linear Matrix Transformation Equations',
       course: 'MTH 102',
-      dueDate: '2026-11-22',
-      priority: 'low',
-      completed: false,
-      createdAt: Date.now()
+      targetDate: '2026-11-22',
+      urgency: 'low',
+      done: false,
+      timestamp: Date.now()
     }
   ];
 
-  let tasks = [];
-  let currentFilter = 'all';
+  let milestoneStore = [];
+  let activeTab = 'all';
 
   document.addEventListener('DOMContentLoaded', () => {
-    initPlanner();
+    bootMilestoneTracker();
   });
 
-  function initPlanner() {
-    loadTasks();
-    setupEventListeners();
-    renderTasks();
+  function bootMilestoneTracker() {
+    retrievePersistedMilestones();
+    bindTrackerEvents();
+    drawMilestoneList();
   }
 
-  function loadTasks() {
+  function retrievePersistedMilestones() {
     try {
-      const stored = localStorage.getItem(STORAGE_KEY);
-      if (stored) {
-        tasks = JSON.parse(stored);
+      const serialized = localStorage.getItem(STORAGE_KEY);
+      if (serialized) {
+        milestoneStore = JSON.parse(serialized);
       } else {
-        tasks = [...DEFAULT_TASKS];
-        saveTasks();
+        milestoneStore = [...SEED_MILESTONES];
+        persistMilestones();
       }
-    } catch (e) {
-      console.error('Failed to parse tasks from localStorage', e);
-      tasks = [...DEFAULT_TASKS];
+    } catch (err) {
+      console.warn('LocalStorage retrieval fallback active', err);
+      milestoneStore = [...SEED_MILESTONES];
     }
   }
 
-  function saveTasks() {
+  function persistMilestones() {
     try {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(tasks));
-    } catch (e) {
-      console.error('Error saving tasks to localStorage', e);
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(milestoneStore));
+    } catch (err) {
+      console.error('Storage write fault', err);
     }
   }
 
-  function setupEventListeners() {
-    const form = document.getElementById('taskForm');
-    if (form) {
-      form.addEventListener('submit', handleAddTask);
+  function bindTrackerEvents() {
+    const entryForm = document.getElementById('milestoneEntryForm');
+    if (entryForm) {
+      entryForm.addEventListener('submit', createMilestone);
     }
 
-    // Filter Buttons
-    const filterButtons = document.querySelectorAll('.filter-btn');
-    filterButtons.forEach(btn => {
+    const tabButtons = document.querySelectorAll('.pd-tab-btn');
+    tabButtons.forEach(btn => {
       btn.addEventListener('click', () => {
-        filterButtons.forEach(b => b.classList.remove('active'));
+        tabButtons.forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
-        currentFilter = btn.getAttribute('data-filter') || 'all';
-        renderTasks();
+        activeTab = btn.getAttribute('data-tab') || 'all';
+        drawMilestoneList();
       });
     });
 
-    // Reset Tasks Button
-    const resetBtn = document.getElementById('resetTasksBtn');
-    if (resetBtn) {
-      resetBtn.addEventListener('click', () => {
-        if (confirm('Reset planner back to Prince Daniel\'s default academic tasks?')) {
-          tasks = [...DEFAULT_TASKS];
-          saveTasks();
-          renderTasks();
-          if (window.showToast) window.showToast('Tasks restored to defaults', 'info');
+    const resetTrigger = document.getElementById('restoreDefaultsBtn');
+    if (resetTrigger) {
+      resetTrigger.addEventListener('click', () => {
+        if (confirm('Restore Prince Daniel\'s default academic milestones?')) {
+          milestoneStore = [...SEED_MILESTONES];
+          persistMilestones();
+          drawMilestoneList();
+          if (window.displayToast) window.displayToast('Milestones reset to original syllabus', 'info');
         }
       });
     }
   }
 
-  function handleAddTask(e) {
+  function createMilestone(e) {
     e.preventDefault();
 
-    const titleInput = document.getElementById('taskTitle');
-    const courseSelect = document.getElementById('taskCourse');
-    const dateInput = document.getElementById('taskDueDate');
-    const prioritySelect = document.getElementById('taskPriority');
+    const titleBox = document.getElementById('milestoneTitle');
+    const courseBox = document.getElementById('milestoneCourse');
+    const dateBox = document.getElementById('milestoneDueDate');
+    const urgencyBox = document.getElementById('milestoneUrgency');
 
-    const title = titleInput ? titleInput.value.trim() : '';
-    const course = courseSelect ? courseSelect.value : '';
-    const dueDate = dateInput ? dateInput.value : '';
-    const priority = prioritySelect ? prioritySelect.value : 'medium';
+    const titleVal = titleBox ? titleBox.value.trim() : '';
+    const courseVal = courseBox ? courseBox.value : '';
+    const dateVal = dateBox ? dateBox.value : '';
+    const urgencyVal = urgencyBox ? urgencyBox.value : 'medium';
 
-    let hasError = false;
+    let validationFailed = false;
 
-    if (!title) {
-      titleInput.classList.add('is-invalid');
-      hasError = true;
+    if (!titleVal) {
+      titleBox.classList.add('is-invalid');
+      validationFailed = true;
     } else {
-      titleInput.classList.remove('is-invalid');
+      titleBox.classList.remove('is-invalid');
     }
 
-    if (!course) {
-      courseSelect.classList.add('is-invalid');
-      hasError = true;
+    if (!courseVal) {
+      courseBox.classList.add('is-invalid');
+      validationFailed = true;
     } else {
-      courseSelect.classList.remove('is-invalid');
+      courseBox.classList.remove('is-invalid');
     }
 
-    if (!dueDate) {
-      dateInput.classList.add('is-invalid');
-      hasError = true;
+    if (!dateVal) {
+      dateBox.classList.add('is-invalid');
+      validationFailed = true;
     } else {
-      dateInput.classList.remove('is-invalid');
+      dateBox.classList.remove('is-invalid');
     }
 
-    if (hasError) return;
+    if (validationFailed) return;
 
-    const newTask = {
-      id: 'task-' + Date.now(),
-      title: title,
-      course: course,
-      dueDate: dueDate,
-      priority: priority,
-      completed: false,
-      createdAt: Date.now()
+    const record = {
+      id: 'mile-' + Date.now(),
+      title: titleVal,
+      course: courseVal,
+      targetDate: dateVal,
+      urgency: urgencyVal,
+      done: false,
+      timestamp: Date.now()
     };
 
-    tasks.unshift(newTask);
-    saveTasks();
-    renderTasks();
+    milestoneStore.unshift(record);
+    persistMilestones();
+    drawMilestoneList();
 
-    // Reset Form
     e.target.reset();
-    if (window.showToast) {
-      window.showToast('Academic Milestone Added! 🚀', 'success');
+    if (window.displayToast) {
+      window.displayToast('Academic milestone scheduled! 🎯', 'success');
     }
   }
 
-  function toggleTaskComplete(taskId) {
-    const task = tasks.find(t => t.id === taskId);
-    if (task) {
-      task.completed = !task.completed;
-      saveTasks();
-      renderTasks();
-      if (window.showToast) {
-        window.showToast(task.completed ? 'Milestone Completed! 🎉' : 'Milestone Reopened', 'info');
+  function toggleMilestoneStatus(recordId) {
+    const target = milestoneStore.find(m => m.id === recordId);
+    if (target) {
+      target.done = !target.done;
+      persistMilestones();
+      drawMilestoneList();
+      if (window.displayToast) {
+        window.displayToast(target.done ? 'Milestone achieved! 🏆' : 'Milestone reopened', 'info');
       }
     }
   }
 
-  function deleteTask(taskId) {
-    if (confirm('Are you sure you want to delete this academic task?')) {
-      tasks = tasks.filter(t => t.id !== taskId);
-      saveTasks();
-      renderTasks();
-      if (window.showToast) {
-        window.showToast('Task removed from academic planner', 'danger');
+  function removeMilestone(recordId) {
+    if (confirm('Are you sure you want to delete this scheduled milestone?')) {
+      milestoneStore = milestoneStore.filter(m => m.id !== recordId);
+      persistMilestones();
+      drawMilestoneList();
+      if (window.displayToast) {
+        window.displayToast('Milestone removed from schedule', 'danger');
       }
     }
   }
 
-  function renderTasks() {
-    const container = document.getElementById('taskListContainer');
+  function drawMilestoneList() {
+    const container = document.getElementById('milestoneRowsContainer');
     if (!container) return;
 
-    updateMetrics();
+    refreshAnalytics();
 
-    let filtered = tasks;
-    if (currentFilter === 'pending') {
-      filtered = tasks.filter(t => !t.completed);
-    } else if (currentFilter === 'completed') {
-      filtered = tasks.filter(t => t.completed);
+    let viewSet = milestoneStore;
+    if (activeTab === 'pending') {
+      viewSet = milestoneStore.filter(m => !m.done);
+    } else if (activeTab === 'completed') {
+      viewSet = milestoneStore.filter(m => m.done);
     }
 
     container.innerHTML = '';
 
-    if (filtered.length === 0) {
+    if (viewSet.length === 0) {
       container.innerHTML = `
-        <div style="text-align:center; padding:32px 16px; background:var(--bg-card); border:1px dashed var(--border-light); border-radius:var(--radius-md);">
-          <div style="font-size:32px; margin-bottom:8px;">📋</div>
-          <h4 style="font-size:16px; font-weight:700;">No Tasks Found</h4>
-          <p style="font-size:13px; color:var(--text-subtle);">There are currently no ${currentFilter} academic milestones scheduled.</p>
+        <div style="text-align:center; padding:30px 16px; background:var(--pd-card-bg); border:1px dashed var(--pd-border); border-radius:var(--pd-radius-md);">
+          <div style="font-size:28px; margin-bottom:6px;">📌</div>
+          <h4 style="font-size:15px; font-weight:700; color:var(--pd-text-head);">No Milestones Found</h4>
+          <p style="font-size:13px; color:var(--pd-text-subtle);">There are no ${activeTab} milestones recorded in your schedule.</p>
         </div>
       `;
       return;
     }
 
-    filtered.forEach(task => {
-      const item = document.createElement('div');
-      item.className = `task-item ${task.completed ? 'completed' : ''}`;
-      item.id = task.id;
+    viewSet.forEach(record => {
+      const row = document.createElement('div');
+      row.className = `pd-task-row ${record.done ? 'completed' : ''}`;
+      row.id = record.id;
 
-      const priorityClass = `task-priority-${task.priority.toLowerCase()}`;
-      const priorityLabel = task.priority.charAt(0).toUpperCase() + task.priority.slice(1);
+      const priorityLabel = record.urgency.charAt(0).toUpperCase() + record.urgency.slice(1);
+      let urgencyColor = '#2563EB';
+      if (record.urgency === 'high') urgencyColor = '#DC2626';
+      if (record.urgency === 'medium') urgencyColor = '#D97706';
 
-      item.innerHTML = `
-        <div class="task-left">
-          <input type="checkbox" class="task-checkbox" ${task.completed ? 'checked' : ''} aria-label="Mark task completed">
-          <div class="task-details">
-            <span class="task-title">${escapeHTML(task.title)}</span>
-            <div class="task-meta">
-              <span class="task-course-badge">${escapeHTML(task.course)}</span>
-              <span>📅 Target: ${task.dueDate}</span>
-              <span class="${priorityClass}">● ${priorityLabel} Priority</span>
+      row.innerHTML = `
+        <div class="pd-row-left">
+          <input type="checkbox" class="pd-task-check" ${record.done ? 'checked' : ''} aria-label="Toggle completion">
+          <div>
+            <div class="pd-task-title">${escapeStr(record.title)}</div>
+            <div class="pd-task-meta">
+              <span class="pd-task-badge">${escapeStr(record.course)}</span>
+              <span>📅 Target: ${record.targetDate}</span>
+              <span style="color:${urgencyColor}; font-weight:700;">● ${priorityLabel} Urgency</span>
             </div>
           </div>
         </div>
-        <button type="button" class="task-delete-btn" title="Delete Task">🗑️</button>
+        <button type="button" class="pd-del-btn" title="Delete Milestone">🗑️</button>
       `;
 
-      // Event Listeners
-      const chk = item.querySelector('.task-checkbox');
-      chk.addEventListener('change', () => toggleTaskComplete(task.id));
+      const checkEl = row.querySelector('.pd-task-check');
+      checkEl.addEventListener('change', () => toggleMilestoneStatus(record.id));
 
-      const del = item.querySelector('.task-delete-btn');
-      del.addEventListener('click', () => deleteTask(task.id));
+      const delBtn = row.querySelector('.pd-del-btn');
+      delBtn.addEventListener('click', () => removeMilestone(record.id));
 
-      container.appendChild(item);
+      container.appendChild(row);
     });
   }
 
-  function updateMetrics() {
-    const totalEl = document.getElementById('totalTasksCount');
-    const compEl = document.getElementById('completedTasksCount');
-    const pendEl = document.getElementById('pendingTasksCount');
-    const fillEl = document.getElementById('progressFill');
-    const percentEl = document.getElementById('progressPercent');
+  function refreshAnalytics() {
+    const totalCountEl = document.getElementById('statTotalCount');
+    const compCountEl = document.getElementById('statCompletedCount');
+    const pendCountEl = document.getElementById('statPendingCount');
+    const fillMeterEl = document.getElementById('analyticsProgressMeter');
+    const percentLabelEl = document.getElementById('analyticsPercentLabel');
 
-    const total = tasks.length;
-    const completed = tasks.filter(t => t.completed).length;
+    const total = milestoneStore.length;
+    const completed = milestoneStore.filter(m => m.done).length;
     const pending = total - completed;
-    const percent = total === 0 ? 0 : Math.round((completed / total) * 100);
+    const ratio = total === 0 ? 0 : Math.round((completed / total) * 100);
 
-    if (totalEl) totalEl.textContent = total;
-    if (compEl) compEl.textContent = completed;
-    if (pendEl) pendEl.textContent = pending;
-    if (fillEl) fillEl.style.width = percent + '%';
-    if (percentEl) percentEl.textContent = percent + '%';
+    if (totalCountEl) totalCountEl.textContent = total;
+    if (compCountEl) compCountEl.textContent = completed;
+    if (pendCountEl) pendCountEl.textContent = pending;
+    if (fillMeterEl) fillMeterEl.style.width = ratio + '%';
+    if (percentLabelEl) percentLabelEl.textContent = ratio + '%';
   }
 
-  function escapeHTML(str) {
+  function escapeStr(str) {
     if (!str) return '';
-    return str.replace(/[&<>'"]/g, tag => ({
+    return str.replace(/[&<>'"]/g, c => ({
       '&': '&amp;',
       '<': '&lt;',
       '>': '&gt;',
       "'": '&#39;',
       '"': '&quot;'
-    }[tag] || tag));
+    }[c] || c));
   }
 })();

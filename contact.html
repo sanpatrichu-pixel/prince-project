@@ -3,24 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact Prince Daniel | Student Inquiries &amp; Academic Communication</title>
-  <meta name="description" content="Reach out to Prince Daniel (2025/C/CYB/1333) at MIVA Open University. Validated contact form and direct academic communication channels.">
+  <title>Contact Prince Daniel | Inquiries &amp; Academic Communication</title>
+  <meta name="description" content="Direct academic and project communication portal for Prince Daniel (2025/C/CYB/1333), B.Sc. Cybersecurity student at MIVA Open University. Validated contact form.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <style>
-    .contact-form-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border-light);
-      border-radius: var(--radius-lg);
-      padding: 30px;
-      box-shadow: var(--shadow-sm);
-    }
-    .modal-overlay {
+    .pd-modal-overlay {
       position: fixed;
       top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(10, 25, 47, 0.75);
+      background: rgba(7, 19, 36, 0.75);
       backdrop-filter: blur(4px);
       z-index: 99999;
       display: none;
@@ -28,227 +21,262 @@
       justify-content: center;
       padding: 20px;
     }
-    .modal-dialog {
-      background: var(--bg-card);
-      border-radius: var(--radius-lg);
-      max-width: 460px;
+    .pd-modal-box {
+      background: var(--pd-card-bg);
+      border-radius: var(--pd-radius-lg);
+      max-width: 480px;
       width: 100%;
-      border: 1px solid var(--border-light);
-      box-shadow: var(--shadow-lg);
-      padding: 28px;
+      border: 1px solid var(--pd-border-light);
+      box-shadow: var(--pd-shadow-lg);
+      padding: 32px;
       text-align: center;
+    }
+    .pd-field-stacked {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 18px;
+    }
+    .pd-field-stacked label {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--pd-text-head);
+    }
+    .pd-textarea {
+      min-height: 120px;
+      padding: 12px;
+      resize: vertical;
+      line-height: 1.5;
     }
   </style>
 </head>
 <body>
 
   <!-- Institutional Top Header -->
-  <header class="inst-bar">
-    <div class="wrap inst-bar-content">
-      <div class="inst-badges">
-        <span class="inst-badge-item">🏛️ MIVA Open University</span>
+  <header class="pd-inst-strip">
+    <div class="pd-wrap pd-inst-inner">
+      <div style="display:flex; align-items:center; gap:8px;">
+        <span class="pd-inst-tag">🏛️ MIVA Open University</span>
         <span>&bull;</span>
         <span>School of Computing &amp; Applied Sciences</span>
       </div>
-      <div class="inst-badges">
-        <span>Contact: <b>Prince Daniel</b></span>
+      <div style="display:flex; align-items:center; gap:8px;">
+        <span>Course: <b>COS 106 (Web Technologies)</b></span>
         <span>&bull;</span>
-        <span class="inst-badge-item">Matric: <b>2025/C/CYB/1333</b></span>
+        <span class="pd-inst-tag">Matric: <b>2025/C/CYB/1333</b></span>
       </div>
     </div>
   </header>
 
-  <!-- Main Navigation Bar -->
-  <nav class="header-nav" aria-label="Main Navigation">
-    <div class="wrap header-content">
-      <a href="index.html" class="brand-logo" aria-label="Prince Daniel Home">
-        <img src="miva-logo.png" alt="MIVA Open University Logo">
-        <div class="brand-text">
-          <span class="brand-name">PRINCE DANIEL</span>
-          <span class="brand-sub">Cybersecurity &bull; Web &amp; Mobile</span>
+  <!-- Sticky Main Navigation -->
+  <nav class="pd-header" aria-label="Main Navigation">
+    <div class="pd-wrap pd-header-row">
+      <!-- Unique University Crest Brand (No Reused PNG) -->
+      <a href="index.html" class="pd-crest-brand" aria-label="Prince Daniel Portfolio">
+        <div class="pd-shield-icon">M</div>
+        <div class="pd-brand-meta">
+          <span class="pd-brand-name">PRINCE <span>DANIEL</span></span>
+          <span class="pd-brand-sub">Cybersecurity &bull; Web &amp; Mobile</span>
         </div>
       </a>
 
-      <ul class="desktop-links">
-        <li><a href="index.html" class="nav-link">Home</a></li>
-        <li><a href="about.html" class="nav-link">About Me</a></li>
-        <li><a href="projects.html" class="nav-link">Projects</a></li>
-        <li><a href="planner.html" class="nav-link">Academic Planner</a></li>
-        <li><a href="contact.html" class="nav-link active">Contact</a></li>
-        <li><a href="report.html" class="nav-link" style="color:var(--navy-mid); font-weight:700;">📄 Project Report</a></li>
+      <!-- Desktop Nav Links -->
+      <ul class="pd-nav-list">
+        <li><a href="index.html" class="pd-nav-item">Home</a></li>
+        <li><a href="about.html" class="pd-nav-item">About Me</a></li>
+        <li><a href="projects.html" class="pd-nav-item">Projects</a></li>
+        <li><a href="planner.html" class="pd-nav-item">Milestone Planner</a></li>
+        <li><a href="contact.html" class="pd-nav-item active">Contact</a></li>
+        <li><a href="report.html" class="pd-nav-item" style="color:var(--pd-royal-mid); font-weight:800;">📄 Project Report</a></li>
       </ul>
 
-      <div class="nav-actions">
-        <button type="button" class="theme-toggle-btn" id="themeToggleBtn" aria-label="Toggle Dark / Light Mode" title="Toggle Theme">
-          🌙
-        </button>
-      </div>
+      <!-- Theme Switcher -->
+      <button type="button" class="pd-theme-btn" id="themeSwitchTrigger" aria-label="Toggle Royal Dark Theme" title="Switch Theme">
+        🌙
+      </button>
     </div>
   </nav>
 
-  <!-- Contact Section -->
-  <section class="sec" style="padding-top:40px;">
-    <div class="wrap">
-      <div class="sec-head" style="text-align:left; margin-bottom:28px;">
-        <div class="sec-eyebrow">COMMUNICATION PORTAL</div>
-        <h1 class="sec-title" style="font-size:32px;">Get In Touch with Prince Daniel</h1>
-        <p class="sec-desc" style="margin:0;">
-          Feel free to reach out regarding academic collaborations, Web &amp; Mobile development projects, or university coursework inquiries.
+  <!-- Main Contact Section -->
+  <main class="pd-sec" style="padding-top:40px; padding-bottom:60px;">
+    <div class="pd-wrap">
+      
+      <!-- Section Header -->
+      <div class="pd-sec-head" style="text-align:left; margin-bottom:30px;">
+        <div class="pd-eyebrow">COMMUNICATION &amp; ACADEMIC INQUIRIES</div>
+        <h1 class="pd-sec-title" style="font-size:32px;">Connect with Prince Daniel</h1>
+        <p class="pd-sec-desc" style="margin:0; max-width:850px;">
+          Have questions regarding mobile app development with Flutter, responsive frontend architecture, or academic collaborations? 
+          Submit an inquiry through the verified portal below.
         </p>
       </div>
 
-      <div class="contact-grid">
+      <!-- 2-Column Contact Grid -->
+      <div class="pd-contact-split">
         
-        <!-- Left: Student Details Card -->
-        <div class="contact-info-card">
+        <!-- Left: Official Institutional Channel Details -->
+        <div class="pd-channel-card">
           <h3>Prince Daniel</h3>
           <p>
-            100-Level Cybersecurity Scholar &amp; Mobile/Web Developer at MIVA Open University.
+            Undergraduate Scholar in B.Sc. Cybersecurity at MIVA Open University. Focused on cross-platform mobile app development, 
+            modern web interfaces, and network security foundations.
           </p>
 
-          <div class="contact-channel-item">
-            <div class="channel-icon">🏛️</div>
-            <div class="channel-meta">
-              <b>Institution &amp; Faculty:</b>
-              <span>MIVA Open University &bull; School of Computing</span>
+          <div class="pd-channel-row">
+            <div class="pd-channel-icon">🏛️</div>
+            <div class="pd-channel-info">
+              <b>University Institution</b>
+              <span>MIVA Open University (School of Computing)</span>
             </div>
           </div>
 
-          <div class="contact-channel-item">
-            <div class="channel-icon">📍</div>
-            <div class="channel-meta">
-              <b>Campus Location:</b>
-              <span>Abuja, Federal Capital Territory, Nigeria</span>
+          <div class="pd-channel-row">
+            <div class="pd-channel-icon">🎓</div>
+            <div class="pd-channel-info">
+              <b>Academic Profile</b>
+              <span>B.Sc. Cybersecurity &bull; Matric: 2025/C/CYB/1333</span>
             </div>
           </div>
 
-          <div class="contact-channel-item">
-            <div class="channel-icon">📧</div>
-            <div class="channel-meta">
-              <b>Official Student Email:</b>
+          <div class="pd-channel-row">
+            <div class="pd-channel-icon">📧</div>
+            <div class="pd-channel-info">
+              <b>Student Email</b>
               <a href="mailto:p.daniel7306@miva.edu.ng">p.daniel7306@miva.edu.ng</a>
             </div>
           </div>
 
-          <div class="contact-channel-item">
-            <div class="channel-icon">📞</div>
-            <div class="channel-meta">
-              <b>Direct Phone Number:</b>
+          <div class="pd-channel-row">
+            <div class="pd-channel-icon">📞</div>
+            <div class="pd-channel-info">
+              <b>Direct Phone Line</b>
               <a href="tel:+2348116761295">+234 811 676 1295</a>
             </div>
           </div>
 
-          <div class="contact-channel-item">
-            <div class="channel-icon">⏰</div>
-            <div class="channel-meta">
-              <b>Academic Availability:</b>
-              <span>Monday &ndash; Friday (9:00 AM &ndash; 5:00 PM WAT)</span>
+          <div class="pd-channel-row">
+            <div class="pd-channel-icon">📍</div>
+            <div class="pd-channel-info">
+              <b>Campus Location</b>
+              <span>Abuja, Federal Capital Territory, Nigeria</span>
+            </div>
+          </div>
+
+          <div style="margin-top:24px; padding-top:20px; border-top:1px solid rgba(255,255,255,0.15);">
+            <div style="font-size:11px; text-transform:uppercase; letter-spacing:0.8px; color:var(--pd-cyan-ice); font-weight:700; margin-bottom:8px;">
+              Technical Expertise Focus
+            </div>
+            <div style="display:flex; flex-wrap:wrap; gap:6px;">
+              <span style="font-size:11px; background:rgba(255,255,255,0.12); padding:3px 8px; border-radius:4px;">Flutter &amp; Dart</span>
+              <span style="font-size:11px; background:rgba(255,255,255,0.12); padding:3px 8px; border-radius:4px;">Semantic HTML5 &amp; CSS3</span>
+              <span style="font-size:11px; background:rgba(255,255,255,0.12); padding:3px 8px; border-radius:4px;">Vanilla JavaScript</span>
+              <span style="font-size:11px; background:rgba(255,255,255,0.12); padding:3px 8px; border-radius:4px;">Cybersecurity Fundamentals</span>
             </div>
           </div>
         </div>
 
-        <!-- Right: Validated Form -->
-        <div class="contact-form-card">
-          <h3 style="font-size:20px; font-weight:800; color:var(--text-main); margin-bottom:6px;">
-            Send a Direct Message
-          </h3>
-          <p style="font-size:13px; color:var(--text-muted); margin-bottom:20px;">
-            All inputs are validated in real time by JavaScript according to official assessment rubric specifications.
-          </p>
+        <!-- Right: Real-Time Validated Inquiry Form -->
+        <div class="pd-task-card" style="margin-bottom:0;">
+          <div style="margin-bottom:20px; padding-bottom:14px; border-bottom:1px solid var(--pd-border-light);">
+            <h3 style="font-size:18px; font-weight:800; color:var(--pd-text-head); margin-bottom:4px;">
+              Transmit an Academic Inquiry
+            </h3>
+            <p style="font-size:12.5px; color:var(--pd-text-subtle); margin:0;">
+              All fields are actively audited via client-side JavaScript regex before dispatch.
+            </p>
+          </div>
 
-          <form id="contactForm" novalidate>
-            <!-- Full Name -->
-            <div class="form-group" style="margin-bottom:16px;">
-              <label for="contactName">Full Name *</label>
-              <input type="text" id="contactName" class="form-control" placeholder="e.g. John Doe" required>
-              <div class="error-feedback">Full name is required and cannot be empty.</div>
+          <form id="inquiryForm" novalidate>
+            <div class="pd-field-stacked">
+              <label for="senderFullName">Full Name *</label>
+              <input type="text" id="senderFullName" class="pd-input" placeholder="e.g. Dr. Kehinde Adebayo" required>
+              <span class="pd-err-msg"></span>
             </div>
 
-            <!-- Email Address -->
-            <div class="form-group" style="margin-bottom:16px;">
-              <label for="contactEmail">Email Address *</label>
-              <input type="email" id="contactEmail" class="form-control" placeholder="e.g. yourname@domain.com" required>
-              <div class="error-feedback">Please enter a valid email address (e.g., student@miva.edu.ng).</div>
+            <div class="pd-field-stacked">
+              <label for="senderEmailAddress">Email Address *</label>
+              <input type="email" id="senderEmailAddress" class="pd-input" placeholder="e.g. lecturer@miva.edu.ng" required>
+              <span class="pd-err-msg"></span>
             </div>
 
-            <!-- Phone Number -->
-            <div class="form-group" style="margin-bottom:16px;">
-              <label for="contactPhone">Phone Number (Digits Only) *</label>
-              <input type="tel" id="contactPhone" class="form-control" placeholder="e.g. 08116761295" required>
-              <div class="error-feedback">Invalid phone number! It must contain digits only (no letters or symbols).</div>
+            <div class="pd-field-stacked">
+              <label for="senderPhoneNumber">Phone Number * (Strictly Digits)</label>
+              <input type="tel" id="senderPhoneNumber" class="pd-input" placeholder="e.g. 08116761295" required>
+              <span class="pd-err-msg"></span>
             </div>
 
-            <!-- Message -->
-            <div class="form-group" style="margin-bottom:20px;">
-              <label for="contactMessage">Your Message *</label>
-              <textarea id="contactMessage" class="form-control" style="height:110px; padding:10px 12px; resize:vertical;" placeholder="Write your message here..." required></textarea>
-              <div class="error-feedback">Message cannot be empty.</div>
+            <div class="pd-field-stacked">
+              <label for="senderMessageBody">Inquiry Message *</label>
+              <textarea id="senderMessageBody" class="pd-input pd-textarea" placeholder="Type your message, project question, or academic collaboration brief here..." required></textarea>
+              <span class="pd-err-msg"></span>
             </div>
 
-            <!-- Submit Button -->
-            <button type="submit" class="btn-primary" style="width:100%; justify-content:center; height:46px; font-size:15px;">
-              ✉️ Send Message Now
+            <button type="submit" class="pd-btn pd-btn-primary" style="width:100%; height:46px; font-size:14px;">
+              Transmit Academic Inquiry 📨
             </button>
           </form>
+
+          <div style="margin-top:16px; font-size:11.5px; color:var(--pd-text-subtle); text-align:center;">
+            🔒 Strictly client-side verified. Zero third-party telemetry or unsecured external tracking.
+          </div>
         </div>
 
       </div>
-    </div>
-  </section>
 
-  <!-- Success Modal Confirmation -->
-  <div class="modal-overlay" id="successModal" role="dialog" aria-modal="true">
-    <div class="modal-dialog">
-      <div style="font-size:48px; margin-bottom:12px;">🎉</div>
-      <h3 style="font-size:20px; font-weight:800; color:var(--text-main); margin-bottom:8px;">Message Transmitted!</h3>
-      <p style="font-size:14px; color:var(--text-muted); line-height:1.6; margin-bottom:20px;">
-        Thank you, <b id="modalSender">Visitor</b>! Your message has been received by Prince Daniel. A confirmation response will be directed to your email shortly.
+    </div>
+  </main>
+
+  <!-- Modal Dialog (Appears on Successful Submission) -->
+  <div id="dispatchModal" class="pd-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modalHeading">
+    <div class="pd-modal-box">
+      <div style="font-size:44px; margin-bottom:12px;">📬</div>
+      <h3 id="modalHeading" style="font-size:20px; font-weight:800; color:var(--pd-text-head); margin-bottom:8px;">
+        Inquiry Successfully Recorded!
+      </h3>
+      <p style="font-size:13.5px; color:var(--pd-text-subtle); line-height:1.6; margin-bottom:20px;">
+        Thank you, <b id="modalContactName" style="color:var(--pd-royal-mid);">Guest</b>. Your message has passed client-side input validation and has been logged to Prince Daniel's portfolio portal.
       </p>
-      <button type="button" class="btn-primary" id="closeModalBtn" style="width:100%; justify-content:center;">
-        Return to Website
+      <button type="button" class="pd-btn pd-btn-primary" id="dismissModalTrigger" style="min-width:140px;">
+        Done
       </button>
     </div>
   </div>
 
-  <!-- Main Footer -->
-  <footer class="main-footer">
-    <div class="wrap">
-      <div class="footer-grid">
+  <!-- Modern Institutional Footer -->
+  <footer class="pd-footer">
+    <div class="pd-wrap">
+      <div class="pd-footer-cols">
         <div>
-          <div class="brand-logo" style="margin-bottom:12px;">
-            <img src="miva-logo.png" alt="MIVA Logo" style="height:32px;">
-            <span style="color:#FFFFFF; font-weight:800; font-size:16px;">PRINCE DANIEL</span>
+          <div style="display:flex; align-items:center; gap:8px; margin-bottom:12px;">
+            <div class="pd-shield-icon" style="width:28px; height:28px; font-size:12px;">M</div>
+            <span style="font-size:16px; font-weight:800; color:#FFFFFF;">PRINCE DANIEL</span>
           </div>
-          <p>
-            Student Academic Portfolio &amp; Task Management System designed and implemented for COS 106: Introduction to Web Technologies.
+          <p style="font-size:13px; line-height:1.6; max-width:280px;">
+            Undergraduate Portfolio in B.Sc. Cybersecurity. Specializing in Web Technologies, 
+            Cross-Platform Mobile App Engineering (Flutter/Dart), and Systems Defense.
           </p>
-          <div style="margin-top:12px; font-size:12px; line-height:1.7;">
-            <div>Matriculation: <b>2025/C/CYB/1333</b></div>
-            <div>Student ID: <b>301897306</b></div>
-            <div>Department: <b>Cybersecurity (100 Level)</b></div>
-          </div>
         </div>
 
         <div>
-          <h5>NAVIGATION</h5>
+          <h5>ACADEMIC PORTAL</h5>
           <ul>
-            <li><a href="index.html">Home Page</a></li>
-            <li><a href="about.html">About Me</a></li>
-            <li><a href="projects.html">Projects Showcase</a></li>
-            <li><a href="planner.html">Academic Planner</a></li>
-            <li><a href="contact.html">Contact Form</a></li>
-            <li><a href="report.html">Assessment Report</a></li>
+            <li><a href="index.html">Home Overview</a></li>
+            <li><a href="about.html">About &amp; Coursework</a></li>
+            <li><a href="projects.html">Technical Projects</a></li>
+            <li><a href="planner.html">Milestone Planner</a></li>
+            <li><a href="contact.html">Contact Student</a></li>
+            <li><a href="report.html">COS 106 Project Report</a></li>
           </ul>
         </div>
 
         <div>
-          <h5>ACADEMICS</h5>
+          <h5>CURRICULUM SPEC</h5>
           <ul>
-            <li>COS 106 (Web Tech)</li>
-            <li>COS 102 (Problem Solving)</li>
-            <li>MIVA-COS 111 (Cert I)</li>
-            <li>MTH 102 (Mathematics II)</li>
-            <li><a href="planner.html">Study Planner System</a></li>
+            <li>Course: COS 106 / CSC 106</li>
+            <li>Institution: MIVA Open University</li>
+            <li>School: Computing &amp; Applied Sciences</li>
+            <li>Assessment Weight: 20 Marks</li>
+            <li>Academic Year: 2025/2026 Session</li>
           </ul>
         </div>
 
@@ -263,7 +291,7 @@
         </div>
       </div>
 
-      <div class="footer-bottom">
+      <div class="pd-footer-bottom">
         <span>&copy; 2025 MIVA Open University &bull; All Rights Reserved. Term Project Assessment.</span>
         <span>Engineered by <b>Prince Daniel</b> &bull; Target: 20/20 Marks</span>
       </div>
@@ -271,24 +299,24 @@
   </footer>
 
   <!-- Floating Mobile App Bottom Bar -->
-  <nav class="mobile-bottom-nav" aria-label="Mobile Bottom Navigation">
-    <a href="index.html" class="bottom-nav-item">
+  <nav class="pd-mobile-bar" aria-label="Mobile Navigation">
+    <a href="index.html" class="pd-bar-item">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
       <span>Home</span>
     </a>
-    <a href="about.html" class="bottom-nav-item">
+    <a href="about.html" class="pd-bar-item">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="7" r="4"></circle><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path></svg>
       <span>About</span>
     </a>
-    <a href="projects.html" class="bottom-nav-item">
+    <a href="projects.html" class="pd-bar-item">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
       <span>Projects</span>
     </a>
-    <a href="planner.html" class="bottom-nav-item">
+    <a href="planner.html" class="pd-bar-item">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
       <span>Planner</span>
     </a>
-    <a href="contact.html" class="bottom-nav-item active">
+    <a href="contact.html" class="pd-bar-item active">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
       <span>Contact</span>
     </a>
