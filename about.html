@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
     rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=3">
+  <link rel="stylesheet" href="style.css?v=4">
   <style>
     .pd-bio-split {
       display: grid;
@@ -87,6 +87,7 @@
       padding: 16px 18px;
       box-shadow: var(--pd-shadow-sm);
       flex-grow: 1;
+      min-width: 0;
     }
 
     .pd-media-panel {
@@ -116,6 +117,9 @@
       .pd-bio-split {
         grid-template-columns: 1fr;
         text-align: center;
+      }
+      .pd-bio-split h1 {
+        font-size: 24px !important;
       }
     }
   </style>
@@ -343,7 +347,7 @@
 
           <div style="display:flex; flex-direction:column; gap:16px;">
             <div>
-              <div style="display:flex; justify-content:space-between; font-weight:700; font-size:12.5px;">
+              <div style="display:flex; justify-content:space-between; gap:8px; font-weight:700; font-size:12.5px;">
                 <span>HTML5 / Semantic DOM Structuring</span>
                 <span style="color:var(--pd-royal-mid);">94%</span>
               </div>
@@ -353,7 +357,7 @@
             </div>
 
             <div>
-              <div style="display:flex; justify-content:space-between; font-weight:700; font-size:12.5px;">
+              <div style="display:flex; justify-content:space-between; gap:8px; font-weight:700; font-size:12.5px;">
                 <span>CSS3 (Flexbox, CSS Grid &amp; Media Queries)</span>
                 <span style="color:var(--pd-royal-mid);">90%</span>
               </div>
@@ -363,7 +367,7 @@
             </div>
 
             <div>
-              <div style="display:flex; justify-content:space-between; font-weight:700; font-size:12.5px;">
+              <div style="display:flex; justify-content:space-between; gap:8px; font-weight:700; font-size:12.5px;">
                 <span>JavaScript (DOM Manipulation &amp; LocalStorage)</span>
                 <span style="color:var(--pd-royal-mid);">86%</span>
               </div>
@@ -373,7 +377,7 @@
             </div>
 
             <div>
-              <div style="display:flex; justify-content:space-between; font-weight:700; font-size:12.5px;">
+              <div style="display:flex; justify-content:space-between; gap:8px; font-weight:700; font-size:12.5px;">
                 <span>Flutter &amp; Dart Mobile Development</span>
                 <span style="color:var(--pd-royal-mid);">82%</span>
               </div>
@@ -383,7 +387,7 @@
             </div>
 
             <div>
-              <div style="display:flex; justify-content:space-between; font-weight:700; font-size:12.5px;">
+              <div style="display:flex; justify-content:space-between; gap:8px; font-weight:700; font-size:12.5px;">
                 <span>Client-Side Input Validation &amp; Regex Security</span>
                 <span style="color:var(--pd-royal-mid);">80%</span>
               </div>
@@ -620,6 +624,15 @@
         <polyline points="22,6 12,13 2,6"></polyline>
       </svg>
       <span>Contact</span>
+    </a>
+    <a href="report.html" class="pd-bar-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+        <polyline points="14 2 14 8 20 8"></polyline>
+        <line x1="16" y1="13" x2="8" y2="13"></line>
+        <line x1="16" y1="17" x2="8" y2="17"></line>
+      </svg>
+      <span>Report</span>
     </a>
   </nav>
 

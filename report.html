@@ -38,6 +38,11 @@
       color-adjust: exact !important;
     }
 
+    html, body {
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
     body {
       font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
       color: var(--rep-text-body);
@@ -51,6 +56,7 @@
 
     .rep-container {
       max-width: 900px;
+      width: 100%;
       margin: 0 auto;
       background: #FFFFFF;
       box-shadow: 0 4px 25px rgba(7, 19, 36, 0.12);
@@ -197,6 +203,13 @@
       border-radius: 8px;
       padding: 12px 14px;
     }
+    .rep-meta-item {
+      min-width: 0;
+      overflow-wrap: anywhere;
+    }
+    .rep-meta-span-2 {
+      grid-column: span 2;
+    }
     .rep-meta-item b {
       display: block;
       font-size: 9.5px;
@@ -336,6 +349,8 @@
       border: 1px solid #64748B;
       border-radius: 6px;
       padding: 10px 12px;
+      min-width: 0;
+      overflow-wrap: break-word;
       page-break-inside: avoid !important;
       break-inside: avoid !important;
     }
@@ -369,9 +384,10 @@
     }
     .rep-shot-card img {
       width: 100%;
-      height: 150px;
-      object-fit: cover;
-      object-position: top;
+      height: 195px;
+      object-fit: contain;
+      object-position: center;
+      background: #071324;
       display: block;
       border-bottom: 1px solid #64748B;
     }
@@ -410,8 +426,8 @@
       margin-bottom: 12px;
     }
 
-    /* Mobile Responsive Overrides */
-    @media (max-width: 768px) {
+    /* Mobile Responsive Overrides (Screen only so A4 print preserves 2-col/4-col print grids) */
+    @media screen and (max-width: 768px) {
       body { padding: 10px; }
       .rep-container { padding: 18px 16px; }
       .rep-screen-bar {
@@ -435,7 +451,7 @@
       .rep-sign-row > div:last-child { text-align: left !important; }
       .rep-code-title { flex-direction: column; gap: 4px; }
     }
-    @media (max-width: 480px) {
+    @media screen and (max-width: 480px) {
       .rep-meta-grid { grid-template-columns: 1fr; }
       .rep-meta-span-2 { grid-column: span 1; }
     }
@@ -469,7 +485,7 @@
         margin-bottom: 16px;
       }
       .rep-shot-card img {
-        height: 125px;
+        height: 175px;
       }
       .rep-sign-box,
       .rep-feature-card,
@@ -569,11 +585,11 @@
           <b>Technical Specialization</b>
           <span>Web &amp; Cross-Platform Mobile</span>
         </div>
-        <div class="rep-meta-item rep-meta-span-2" style="grid-column: span 2;">
+        <div class="rep-meta-item rep-meta-span-2">
           <b>Live Deployed Website (Render)</b>
           <span><a href="https://prince-project-f0zc.onrender.com/" target="_blank" rel="noopener noreferrer" style="color:#1D4ED8; text-decoration:underline; word-break:break-all;">https://prince-project-f0zc.onrender.com/</a></span>
         </div>
-        <div class="rep-meta-item rep-meta-span-2" style="grid-column: span 2;">
+        <div class="rep-meta-item rep-meta-span-2">
           <b>GitHub Source Repository</b>
           <span><a href="https://github.com/sanpatrichu-pixel/prince-project" target="_blank" rel="noopener noreferrer" style="color:#1D4ED8; text-decoration:underline; word-break:break-all;">https://github.com/sanpatrichu-pixel/prince-project</a></span>
         </div>
@@ -614,7 +630,7 @@
           <tr>
             <td><code>projects.html</code> (Showcase)</td>
             <td>4 distinctive projects (UniRide, DevPulse, EduTrack, KeyVault), category filtering system, interactive simulation sandbox modal.</td>
-            <td>Responsive card grid (<code>repeat(auto-fit, minmax(320px, 1fr))</code>), DOM dataset filtering, dynamic dialog generator.</td>
+            <td>Responsive card grid (<code>repeat(auto-fit, minmax(min(100%, 300px), 1fr))</code>), DOM dataset filtering, dynamic dialog generator.</td>
           </tr>
           <tr>
             <td><code>planner.html</code> (Productivity)</td>
@@ -860,7 +876,7 @@ function removeMilestone(recordId) {
           <tr>
             <td><strong>7. External CSS &amp; Responsiveness</strong><br>Flexbox/Grid, transitions, mobile layout.</td>
             <td>Custom CSS architecture (zero Bootstrap), CSS Grid &amp; Flexbox, mobile navigation bar, dark theme engine.</td>
-            <td><code>style.css</code> (lines 1–934)</td>
+            <td><code>style.css</code> (default Dark Mode + responsive CSS)</td>
           </tr>
           <tr>
             <td><strong>8. JavaScript Interactivity</strong><br>DOM manipulation, arrays, event listeners.</td>
@@ -886,7 +902,7 @@ function removeMilestone(recordId) {
 
       <div class="rep-shot-grid">
         <div class="rep-shot-card">
-          <img src="assets/screenshots/home.png?v=2" alt="Homepage Screenshot">
+          <img src="assets/screenshots/home.png?v=3" alt="Homepage Screenshot">
           <div class="rep-shot-caption">
             <span>Figure 1: Homepage — Profile Dock on Left &amp; KPI Cards</span>
             <code>index.html</code>
@@ -894,7 +910,7 @@ function removeMilestone(recordId) {
         </div>
 
         <div class="rep-shot-card">
-          <img src="assets/screenshots/about.png?v=2" alt="About Me Screenshot">
+          <img src="assets/screenshots/about.png?v=3" alt="About Me Screenshot">
           <div class="rep-shot-caption">
             <span>Figure 2: About Me — 8-Course Table &amp; Multimedia</span>
             <code>about.html</code>
@@ -902,7 +918,7 @@ function removeMilestone(recordId) {
         </div>
 
         <div class="rep-shot-card">
-          <img src="assets/screenshots/projects.png?v=2" alt="Projects Page Screenshot">
+          <img src="assets/screenshots/projects.png?v=3" alt="Projects Page Screenshot">
           <div class="rep-shot-caption">
             <span>Figure 3: Projects — UniRide, DevPulse &amp; Sandbox Modal</span>
             <code>projects.html</code>
@@ -910,7 +926,7 @@ function removeMilestone(recordId) {
         </div>
 
         <div class="rep-shot-card">
-          <img src="assets/screenshots/planner-tasks.png?v=2" alt="Academic Planner Screenshot">
+          <img src="assets/screenshots/planner-tasks.png?v=3" alt="Academic Planner Screenshot">
           <div class="rep-shot-caption">
             <span>Figure 4: EduTrack Planner — Dynamic Tasks &amp; Progress Rail</span>
             <code>planner.html</code>
@@ -918,7 +934,7 @@ function removeMilestone(recordId) {
         </div>
 
         <div class="rep-shot-card">
-          <img src="assets/screenshots/contact.png?v=2" alt="Contact Form Screenshot">
+          <img src="assets/screenshots/contact.png?v=3" alt="Contact Form Screenshot">
           <div class="rep-shot-caption">
             <span>Figure 5: Contact — Real-Time Input Auditing &amp; Details</span>
             <code>contact.html</code>
@@ -926,7 +942,7 @@ function removeMilestone(recordId) {
         </div>
 
         <div class="rep-shot-card">
-          <img src="assets/screenshots/mobile-responsive.png?v=2" alt="Mobile Responsive Screenshot">
+          <img src="assets/screenshots/mobile-responsive.png?v=3" alt="Mobile Responsive Screenshot">
           <div class="rep-shot-caption">
             <span>Figure 6: Mobile Responsive — Bottom Bar &amp; Fluid Stack</span>
             <code>375px Emulation</code>

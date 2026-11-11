@@ -36,14 +36,14 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!toastShelf) {
       toastShelf = document.createElement('div');
       toastShelf.className = 'pd-toast-shelf';
-      toastShelf.style.cssText = 'position:fixed; bottom:75px; right:20px; z-index:99999; display:flex; flex-direction:column; gap:8px;';
+      toastShelf.style.cssText = 'position:fixed; bottom:75px; right:16px; left:16px; pointer-events:none; z-index:99999; display:flex; flex-direction:column; align-items:flex-end; gap:8px;';
       document.body.appendChild(toastShelf);
     }
 
     const toastCard = document.createElement('div');
-    toastCard.style.cssText = 'background:#071324; color:#FFFFFF; padding:10px 16px; border-radius:6px; font-size:13px; font-weight:700; box-shadow:0 6px 18px rgba(0,0,0,0.3); border-left:4px solid #1D4ED8; display:flex; align-items:center; gap:8px; transition:all 0.3s;';
+    toastCard.style.cssText = 'background:#0D1E36; color:#FFFFFF; padding:10px 16px; border-radius:6px; font-size:13px; font-weight:700; box-shadow:0 6px 18px rgba(0,0,0,0.45); border:1px solid #1E3A5F; border-left:4px solid #38BDF8; display:flex; align-items:center; gap:8px; max-width:100%; pointer-events:auto; transition:all 0.3s;';
     
-    if (alertType === 'success') toastCard.style.borderLeftColor = '#0284C7';
+    if (alertType === 'success') toastCard.style.borderLeftColor = '#38BDF8';
     if (alertType === 'danger') toastCard.style.borderLeftColor = '#DC2626';
 
     toastCard.innerHTML = `<span>\u2139\uFE0F</span> <span>${msg}</span>`;
