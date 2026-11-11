@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>About Prince Daniel | Academic Profile &amp; Technical Curriculum</title>
-  <meta name="description" content="Academic background, registered 100-Level coursework, technical skill metrics, and career roadmap for Prince Daniel (2025/C/CYB/1333) at MIVA Open University.">
+  <meta name="description"
+    content="Academic background, registered 100-Level coursework, technical skill metrics, and career roadmap for Prince Daniel (2025/C/CYB/1333) at MIVA Open University.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="style.css?v=2">
   <style>
     .pd-bio-split {
       display: grid;
@@ -16,6 +19,7 @@
       gap: 36px;
       align-items: center;
     }
+
     .pd-skill-track {
       background: var(--pd-card-subtle);
       height: 9px;
@@ -24,6 +28,7 @@
       margin-top: 6px;
       border: 1px solid var(--pd-border-light);
     }
+
     .pd-skill-fill {
       height: 100%;
       background: linear-gradient(90deg, var(--pd-royal-primary) 0%, var(--pd-cyan-ice) 100%);
@@ -31,6 +36,7 @@
       width: 0;
       transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
     }
+
     .pd-timeline-chain {
       display: flex;
       flex-direction: column;
@@ -38,6 +44,7 @@
       position: relative;
       margin-top: 20px;
     }
+
     .pd-timeline-chain::before {
       content: '';
       position: absolute;
@@ -47,11 +54,13 @@
       width: 2px;
       background: var(--pd-border-light);
     }
+
     .pd-timeline-step {
       display: flex;
       gap: 18px;
       position: relative;
     }
+
     .pd-step-badge {
       width: 36px;
       height: 36px;
@@ -67,6 +76,7 @@
       z-index: 1;
       border: 3px solid var(--pd-page-bg);
     }
+
     .pd-step-body {
       background: var(--pd-card-bg);
       border: 1px solid var(--pd-border-light);
@@ -75,6 +85,7 @@
       box-shadow: var(--pd-shadow-sm);
       flex-grow: 1;
     }
+
     .pd-media-panel {
       background: var(--pd-card-bg);
       border: 1px solid var(--pd-border-light);
@@ -85,28 +96,35 @@
       flex-direction: column;
       gap: 12px;
     }
+
     .pd-media-panel video {
       width: 100%;
       border-radius: var(--pd-radius-md);
       background: #071324;
       max-height: 250px;
     }
+
     .pd-media-panel audio {
       width: 100%;
       margin-top: 8px;
     }
+
     @media (max-width: 800px) {
-      .pd-bio-split { grid-template-columns: 1fr; text-align: center; }
+      .pd-bio-split {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
     }
   </style>
 </head>
+
 <body>
 
   <!-- Institutional Top Header -->
   <header class="pd-inst-strip">
     <div class="pd-wrap pd-inst-inner">
       <div style="display:flex; align-items:center; gap:8px;">
-        <span class="pd-inst-tag">🏛️ MIVA Open University</span>
+        <span class="pd-inst-tag">&#x1F3DB;&#xFE0F; MIVA Open University</span>
         <span>&bull;</span>
         <span>School of Computing &amp; Applied Sciences</span>
       </div>
@@ -122,7 +140,7 @@
   <nav class="pd-header" aria-label="Main Navigation">
     <div class="pd-wrap pd-header-row">
       <a href="index.html" class="pd-crest-brand" aria-label="Prince Daniel Home">
-        <div class="pd-shield-icon">M</div>
+        <div class="pd-shield-icon"><img src="portrait.jpg?v=2" alt="Prince Daniel"></div>
         <div class="pd-brand-meta">
           <span class="pd-brand-name">PRINCE <span>DANIEL</span></span>
           <span class="pd-brand-sub">Cybersecurity &bull; Web &amp; Mobile</span>
@@ -135,24 +153,29 @@
         <li><a href="projects.html" class="pd-nav-item">Projects</a></li>
         <li><a href="planner.html" class="pd-nav-item">Milestone Planner</a></li>
         <li><a href="contact.html" class="pd-nav-item">Contact</a></li>
-        <li><a href="report.html" class="pd-nav-item" style="color:var(--pd-royal-mid); font-weight:800;">📄 Project Report</a></li>
+        <li><a href="report.html" class="pd-nav-item" style="color:var(--pd-royal-mid); font-weight:800;">&#x1F4C4;
+            Project Report</a></li>
       </ul>
 
-      <button type="button" class="pd-theme-btn" id="themeSwitchTrigger" aria-label="Toggle Royal Dark Theme" title="Switch Theme">
-        🌙
+      <button type="button" class="pd-theme-btn" id="themeSwitchTrigger" aria-label="Toggle Royal Dark Theme"
+        title="Switch Theme">
+        &#x1F319;
       </button>
     </div>
   </nav>
 
   <!-- Biography Summary Section -->
-  <section class="pd-sec" style="padding-top:40px; background:linear-gradient(180deg, rgba(224, 242, 254, 0.45) 0%, rgba(248, 250, 252, 0) 100%);">
+  <section class="pd-sec"
+    style="padding-top:40px; background:linear-gradient(180deg, rgba(224, 242, 254, 0.45) 0%, rgba(248, 250, 252, 0) 100%);">
     <div class="pd-wrap">
       <div class="pd-bio-split">
-        
+
         <!-- Left Portrait Frame -->
         <div>
-          <div style="width:230px; height:270px; margin:0 auto; border-radius:var(--pd-radius-lg); overflow:hidden; border:4px solid var(--pd-card-bg); box-shadow:var(--pd-shadow-lg);">
-            <img src="portrait.jpg" alt="Prince Daniel Portrait" style="width:100%; height:100%; object-fit:cover; object-position:center top;">
+          <div
+            style="width:230px; height:270px; margin:0 auto; border-radius:var(--pd-radius-lg); overflow:hidden; border:4px solid var(--pd-card-bg); box-shadow:var(--pd-shadow-lg);">
+            <img src="portrait.jpg?v=2" alt="Prince Daniel Portrait"
+              style="width:100%; height:100%; object-fit:cover; object-position:center center;">
           </div>
           <div style="margin-top:12px; font-weight:800; color:var(--pd-text-head); font-size:16px;">
             Prince Daniel
@@ -166,15 +189,19 @@
         <div>
           <div class="pd-sec-tag">SCHOLAR PROFILE</div>
           <h1 style="font-size:30px; font-weight:800; color:var(--pd-text-head); margin-bottom:12px; line-height:1.3;">
-            Dedicated to Modern <span style="color:var(--pd-royal-mid);">Web Architecture</span> &amp; Mobile Experiences.
+            Dedicated to Modern <span style="color:var(--pd-royal-mid);">Web Architecture</span> &amp; Mobile
+            Experiences.
           </h1>
           <p style="font-size:14.5px; color:var(--pd-text-body); line-height:1.7; margin-bottom:12px;">
-            I am a 100-Level undergraduate at <strong>MIVA Open University</strong> studying <strong>Cybersecurity</strong>. 
-            While my academic syllabus covers cryptographic principles, threat management, and network vulnerability auditing, 
-            my true engineering passion lies in building accessible web interfaces and cross-platform Flutter applications.
+            I am a 100-Level undergraduate at <strong>MIVA Open University</strong> studying
+            <strong>Cybersecurity</strong>.
+            While my academic syllabus covers cryptographic principles, threat management, and network vulnerability
+            auditing,
+            my true engineering passion lies in building accessible web interfaces and cross-platform Flutter
+            applications.
           </p>
           <p style="font-size:14.5px; color:var(--pd-text-body); line-height:1.7;">
-            By focusing on semantic document outlines, mobile responsiveness, and client-side performance, 
+            By focusing on semantic document outlines, mobile responsiveness, and client-side performance,
             I create modern tools that provide frictionless user journeys while safeguarding data integrity.
           </p>
         </div>
@@ -213,7 +240,9 @@
               <td>Introduction to Web Technologies</td>
               <td>3 Units</td>
               <td>Core Compulsory</td>
-              <td><span style="color:var(--pd-badge-blue-text); background:var(--pd-badge-blue-bg); font-weight:700; padding:2px 8px; border-radius:4px; font-size:11px;">Enrolled</span></td>
+              <td><span
+                  style="color:var(--pd-badge-blue-text); background:var(--pd-badge-blue-bg); font-weight:700; padding:2px 8px; border-radius:4px; font-size:11px;">Enrolled</span>
+              </td>
               <td><b>A (90%+)</b></td>
             </tr>
             <tr>
@@ -221,7 +250,9 @@
               <td>Problem Solving &amp; Algorithmic Logic</td>
               <td>3 Units</td>
               <td>Core Compulsory</td>
-              <td><span style="color:var(--pd-badge-blue-text); background:var(--pd-badge-blue-bg); font-weight:700; padding:2px 8px; border-radius:4px; font-size:11px;">Enrolled</span></td>
+              <td><span
+                  style="color:var(--pd-badge-blue-text); background:var(--pd-badge-blue-bg); font-weight:700; padding:2px 8px; border-radius:4px; font-size:11px;">Enrolled</span>
+              </td>
               <td><b>A (88%)</b></td>
             </tr>
             <tr>
@@ -229,7 +260,9 @@
               <td>Technical Certification Lab I</td>
               <td>2 Units</td>
               <td>Core Practical</td>
-              <td><span style="color:var(--pd-badge-blue-text); background:var(--pd-badge-blue-bg); font-weight:700; padding:2px 8px; border-radius:4px; font-size:11px;">Enrolled</span></td>
+              <td><span
+                  style="color:var(--pd-badge-blue-text); background:var(--pd-badge-blue-bg); font-weight:700; padding:2px 8px; border-radius:4px; font-size:11px;">Enrolled</span>
+              </td>
               <td><b>A (92%)</b></td>
             </tr>
             <tr>
@@ -237,7 +270,9 @@
               <td>Elementary Mathematics II (Linear Systems)</td>
               <td>3 Units</td>
               <td>Faculty Required</td>
-              <td><span style="color:var(--pd-badge-blue-text); background:var(--pd-badge-blue-bg); font-weight:700; padding:2px 8px; border-radius:4px; font-size:11px;">Enrolled</span></td>
+              <td><span
+                  style="color:var(--pd-badge-blue-text); background:var(--pd-badge-blue-bg); font-weight:700; padding:2px 8px; border-radius:4px; font-size:11px;">Enrolled</span>
+              </td>
               <td><b>A (85%)</b></td>
             </tr>
             <tr>
@@ -245,7 +280,9 @@
               <td>General Physics II (Electricity &amp; Magnetism)</td>
               <td>3 Units</td>
               <td>Faculty Required</td>
-              <td><span style="color:var(--pd-badge-blue-text); background:var(--pd-badge-blue-bg); font-weight:700; padding:2px 8px; border-radius:4px; font-size:11px;">Enrolled</span></td>
+              <td><span
+                  style="color:var(--pd-badge-blue-text); background:var(--pd-badge-blue-bg); font-weight:700; padding:2px 8px; border-radius:4px; font-size:11px;">Enrolled</span>
+              </td>
               <td><b>B (78%)</b></td>
             </tr>
             <tr>
@@ -253,7 +290,9 @@
               <td>General Physics Practical II</td>
               <td>1 Unit</td>
               <td>Faculty Practical</td>
-              <td><span style="color:var(--pd-badge-blue-text); background:var(--pd-badge-blue-bg); font-weight:700; padding:2px 8px; border-radius:4px; font-size:11px;">Enrolled</span></td>
+              <td><span
+                  style="color:var(--pd-badge-blue-text); background:var(--pd-badge-blue-bg); font-weight:700; padding:2px 8px; border-radius:4px; font-size:11px;">Enrolled</span>
+              </td>
               <td><b>A (88%)</b></td>
             </tr>
             <tr>
@@ -261,7 +300,9 @@
               <td>Nigerian Peoples and Culture</td>
               <td>2 Units</td>
               <td>General Studies</td>
-              <td><span style="color:var(--pd-badge-blue-text); background:var(--pd-badge-blue-bg); font-weight:700; padding:2px 8px; border-radius:4px; font-size:11px;">Enrolled</span></td>
+              <td><span
+                  style="color:var(--pd-badge-blue-text); background:var(--pd-badge-blue-bg); font-weight:700; padding:2px 8px; border-radius:4px; font-size:11px;">Enrolled</span>
+              </td>
               <td><b>A (86%)</b></td>
             </tr>
             <tr>
@@ -269,7 +310,9 @@
               <td>Communication Skills in English II</td>
               <td>2 Units</td>
               <td>General Studies</td>
-              <td><span style="color:var(--pd-badge-blue-text); background:var(--pd-badge-blue-bg); font-weight:700; padding:2px 8px; border-radius:4px; font-size:11px;">Enrolled</span></td>
+              <td><span
+                  style="color:var(--pd-badge-blue-text); background:var(--pd-badge-blue-bg); font-weight:700; padding:2px 8px; border-radius:4px; font-size:11px;">Enrolled</span>
+              </td>
               <td><b>A (90%)</b></td>
             </tr>
           </tbody>
@@ -289,12 +332,13 @@
   <section class="pd-sec" style="background:var(--pd-card-subtle);">
     <div class="pd-wrap">
       <div style="display:grid; grid-template-columns:1fr 1fr; gap:36px;">
-        
+
         <!-- Left: Technical Skills -->
         <div>
           <div class="pd-sec-tag">PROFICIENCY AUDIT</div>
-          <h2 style="font-size:23px; font-weight:800; color:var(--pd-text-head); margin-bottom:12px;">Technical Skills &amp; Stacks</h2>
-          
+          <h2 style="font-size:23px; font-weight:800; color:var(--pd-text-head); margin-bottom:12px;">Technical Skills
+            &amp; Stacks</h2>
+
           <div style="display:flex; flex-direction:column; gap:16px;">
             <div>
               <div style="display:flex; justify-content:space-between; font-weight:700; font-size:12.5px;">
@@ -351,15 +395,18 @@
         <!-- Right: 3-Phase Roadmap -->
         <div>
           <div class="pd-sec-tag">CAREER ROADMAP</div>
-          <h2 style="font-size:23px; font-weight:800; color:var(--pd-text-head); margin-bottom:12px;">3-Phase Professional Path</h2>
+          <h2 style="font-size:23px; font-weight:800; color:var(--pd-text-head); margin-bottom:12px;">3-Phase
+            Professional Path</h2>
 
           <div class="pd-timeline-chain">
             <div class="pd-timeline-step">
               <div class="pd-step-badge">1</div>
               <div class="pd-step-body">
-                <h4 style="font-size:14.5px; font-weight:800; color:var(--pd-text-head); margin-bottom:3px;">Phase 1: Web &amp; Mobile Foundations (100L–200L)</h4>
+                <h4 style="font-size:14.5px; font-weight:800; color:var(--pd-text-head); margin-bottom:3px;">Phase 1:
+                  Web &amp; Mobile Foundations (100L&#x2013;200L)</h4>
                 <p style="font-size:12.5px; color:var(--pd-text-subtle); margin:0;">
-                  Mastering core HTML5/CSS3/JavaScript standards, building cross-platform Flutter applications, and writing accessible user interfaces.
+                  Mastering core HTML5/CSS3/JavaScript standards, building cross-platform Flutter applications, and
+                  writing accessible user interfaces.
                 </p>
               </div>
             </div>
@@ -367,9 +414,11 @@
             <div class="pd-timeline-step">
               <div class="pd-step-badge">2</div>
               <div class="pd-step-body">
-                <h4 style="font-size:14.5px; font-weight:800; color:var(--pd-text-head); margin-bottom:3px;">Phase 2: Full-Stack Systems &amp; API Security (300L)</h4>
+                <h4 style="font-size:14.5px; font-weight:800; color:var(--pd-text-head); margin-bottom:3px;">Phase 2:
+                  Full-Stack Systems &amp; API Security (300L)</h4>
                 <p style="font-size:12.5px; color:var(--pd-text-subtle); margin:0;">
-                  Engineering secure RESTful web services, tokenized authentication workflows, input validation sanitizers, and database abstraction layers.
+                  Engineering secure RESTful web services, tokenized authentication workflows, input validation
+                  sanitizers, and database abstraction layers.
                 </p>
               </div>
             </div>
@@ -377,9 +426,11 @@
             <div class="pd-timeline-step">
               <div class="pd-step-badge">3</div>
               <div class="pd-step-body">
-                <h4 style="font-size:14.5px; font-weight:800; color:var(--pd-text-head); margin-bottom:3px;">Phase 3: Senior Application Security Architect (Graduate)</h4>
+                <h4 style="font-size:14.5px; font-weight:800; color:var(--pd-text-head); margin-bottom:3px;">Phase 3:
+                  Senior Application Security Architect (Graduate)</h4>
                 <p style="font-size:12.5px; color:var(--pd-text-subtle); margin:0;">
-                  Overseeing enterprise mobile-first platforms, conducting code audits, enforcing zero-trust architecture, and deploying high-scale digital solutions.
+                  Overseeing enterprise mobile-first platforms, conducting code audits, enforcing zero-trust
+                  architecture, and deploying high-scale digital solutions.
                 </p>
               </div>
             </div>
@@ -396,26 +447,30 @@
       <div class="pd-sec-header">
         <div class="pd-sec-tag">EXTRACURRICULARS</div>
         <h2 class="pd-sec-title">Hobbies &amp; Personal Interests</h2>
-        <p class="pd-sec-subtitle">Pursuits that enhance spatial reasoning, physical discipline, and design sensibilities.</p>
+        <p class="pd-sec-subtitle">Pursuits that enhance spatial reasoning, physical discipline, and design
+          sensibilities.</p>
       </div>
 
       <div class="pd-tri-grid">
         <div class="pd-feature-card">
-          <div class="pd-feature-icon">🎨</div>
+          <div class="pd-feature-icon">&#x1F3A8;</div>
           <h4>UI/UX Prototyping in Figma</h4>
-          <p>Drafting mobile design systems, responsive component variants, micro-interaction states, and accessible color contrasts.</p>
+          <p>Drafting mobile design systems, responsive component variants, micro-interaction states, and accessible
+            color contrasts.</p>
         </div>
 
         <div class="pd-feature-card">
-          <div class="pd-feature-icon">🏀</div>
+          <div class="pd-feature-icon">&#x1F3C0;</div>
           <h4>Basketball &amp; Team Athletics</h4>
-          <p>Playing competitive basketball to sharpen physical reflexes, build stamina, and exercise communication within high-speed team dynamics.</p>
+          <p>Playing competitive basketball to sharpen physical reflexes, build stamina, and exercise communication
+            within high-speed team dynamics.</p>
         </div>
 
         <div class="pd-feature-card">
-          <div class="pd-feature-icon">♟️</div>
+          <div class="pd-feature-icon">&#x265F;&#xFE0F;</div>
           <h4>Tactical Chess &amp; Strategy</h4>
-          <p>Practicing endgame calculation, positional foresight, and adaptive planning that translate directly into defensive cybersecurity thinking.</p>
+          <p>Practicing endgame calculation, positional foresight, and adaptive planning that translate directly into
+            defensive cybersecurity thinking.</p>
         </div>
       </div>
     </div>
@@ -427,14 +482,16 @@
       <div class="pd-sec-header">
         <div class="pd-sec-tag">MULTIMEDIA INTEGRATION</div>
         <h2 class="pd-sec-title">Voice Note Greeting &amp; Video Walkthrough</h2>
-        <p class="pd-sec-subtitle">Demonstrating native HTML5 multimedia integration via embedded audio and video players.</p>
+        <p class="pd-sec-subtitle">Demonstrating native HTML5 multimedia integration via embedded audio and video
+          players.</p>
       </div>
 
       <div style="display:grid; grid-template-columns:1fr 1fr; gap:22px;">
         <div class="pd-media-panel">
-          <h4 style="font-size:16px; font-weight:800; color:var(--pd-text-head);">🎙️ Audio Greeting</h4>
+          <h4 style="font-size:16px; font-weight:800; color:var(--pd-text-head);">&#x1F399;&#xFE0F; Audio Greeting</h4>
           <p style="font-size:13px; color:var(--pd-text-subtle); margin:0;">
-            A spoken voice note from Prince Daniel introducing his academic path and welcoming visitors to his academic platform.
+            A spoken voice note from Prince Daniel introducing his academic path and welcoming visitors to his academic
+            platform.
           </p>
           <audio controls preload="metadata">
             <source src="assets/media/intro-audio.wav" type="audio/wav">
@@ -444,11 +501,13 @@
         </div>
 
         <div class="pd-media-panel">
-          <h4 style="font-size:16px; font-weight:800; color:var(--pd-text-head);">📹 Platform Demonstration Video</h4>
+          <h4 style="font-size:16px; font-weight:800; color:var(--pd-text-head);">&#x1F4F9; Platform Demonstration Video
+          </h4>
           <p style="font-size:13px; color:var(--pd-text-subtle); margin:0;">
-            A walkthrough presenting the multi-page structure, responsive mobile drawer, and interactive milestone planning system.
+            A walkthrough presenting the multi-page structure, responsive mobile drawer, and interactive milestone
+            planning system.
           </p>
-          <video controls poster="portrait.jpg" preload="metadata">
+          <video controls poster="portrait.jpg?v=2" preload="metadata">
             <source src="assets/media/demo-video.mp4" type="video/mp4">
             Your browser does not support the video element.
           </video>
@@ -463,11 +522,13 @@
       <div class="pd-footer-cols">
         <div>
           <div class="pd-crest-brand" style="margin-bottom:12px;">
-            <div class="pd-shield-icon" style="width:32px; height:32px; font-size:14px;">M</div>
+            <div class="pd-shield-icon" style="width:32px; height:32px;"><img src="portrait.jpg?v=2"
+                alt="Prince Daniel"></div>
             <span style="color:#FFFFFF; font-weight:800; font-size:15px;">PRINCE DANIEL</span>
           </div>
           <p>
-            Student Academic Portfolio &amp; Task Management System designed and implemented for COS 106: Introduction to Web Technologies.
+            Student Academic Portfolio &amp; Task Management System designed and implemented for COS 106: Introduction
+            to Web Technologies.
           </p>
           <div style="margin-top:10px; font-size:11.5px; line-height:1.7;">
             <div>Matriculation: <b>2025/C/CYB/1333</b></div>
@@ -511,8 +572,8 @@
       </div>
 
       <div class="pd-footer-bottom">
-        <span>&copy; 2025 MIVA Open University &bull; All Rights Reserved. Term Project Assessment.</span>
-        <span>Engineered by <b>Prince Daniel</b> &bull; Target: 20/20 Marks</span>
+        <span>&copy; 2025 MIVA Open University &bull; All Rights Reserved.</span>
+        <span>Engineered by <b>Prince Daniel</b> (2025/C/CYB/1333)</span>
       </div>
     </div>
   </footer>
@@ -520,27 +581,45 @@
   <!-- Mobile Bottom App Bar -->
   <nav class="pd-mobile-bar" aria-label="Mobile Navigation">
     <a href="index.html" class="pd-bar-item">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+        <polyline points="9 22 9 12 15 12 15 22"></polyline>
+      </svg>
       <span>Home</span>
     </a>
     <a href="about.html" class="pd-bar-item active">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="7" r="4"></circle><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path></svg>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="12" cy="7" r="4"></circle>
+        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+      </svg>
       <span>About</span>
     </a>
     <a href="projects.html" class="pd-bar-item">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+        <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+      </svg>
       <span>Projects</span>
     </a>
     <a href="planner.html" class="pd-bar-item">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+        <line x1="16" y1="2" x2="16" y2="6"></line>
+        <line x1="8" y1="2" x2="8" y2="6"></line>
+        <line x1="3" y1="10" x2="21" y2="10"></line>
+      </svg>
       <span>Planner</span>
     </a>
     <a href="contact.html" class="pd-bar-item">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+        <polyline points="22,6 12,13 2,6"></polyline>
+      </svg>
       <span>Contact</span>
     </a>
   </nav>
 
   <script src="js/main.js"></script>
 </body>
+
 </html>

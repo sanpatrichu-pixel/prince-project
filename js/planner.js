@@ -169,7 +169,7 @@
 
     e.target.reset();
     if (window.displayToast) {
-      window.displayToast('Academic milestone scheduled! 🎯', 'success');
+      window.displayToast('Academic milestone scheduled! \uD83C\uDFAF', 'success');
     }
   }
 
@@ -180,7 +180,7 @@
       persistMilestones();
       drawMilestoneList();
       if (window.displayToast) {
-        window.displayToast(target.done ? 'Milestone achieved! 🏆' : 'Milestone reopened', 'info');
+        window.displayToast(target.done ? 'Milestone achieved! \uD83C\uDFC6' : 'Milestone reopened', 'info');
       }
     }
   }
@@ -214,7 +214,7 @@
     if (viewSet.length === 0) {
       container.innerHTML = `
         <div style="text-align:center; padding:30px 16px; background:var(--pd-card-bg); border:1px dashed var(--pd-border); border-radius:var(--pd-radius-md);">
-          <div style="font-size:28px; margin-bottom:6px;">📌</div>
+          <div style="font-size:28px; margin-bottom:6px;">\uD83D\uDCCC</div>
           <h4 style="font-size:15px; font-weight:700; color:var(--pd-text-head);">No Milestones Found</h4>
           <p style="font-size:13px; color:var(--pd-text-subtle);">There are no ${activeTab} milestones recorded in your schedule.</p>
         </div>
@@ -239,12 +239,12 @@
             <div class="pd-task-title">${escapeStr(record.title)}</div>
             <div class="pd-task-meta">
               <span class="pd-task-badge">${escapeStr(record.course)}</span>
-              <span>📅 Target: ${record.targetDate}</span>
-              <span style="color:${urgencyColor}; font-weight:700;">● ${priorityLabel} Urgency</span>
+              <span>\uD83D\uDCC5 Target: ${record.targetDate}</span>
+              <span style="color:${urgencyColor}; font-weight:700;">\u25CF ${priorityLabel} Urgency</span>
             </div>
           </div>
         </div>
-        <button type="button" class="pd-del-btn" title="Delete Milestone">🗑️</button>
+        <button type="button" class="pd-del-btn" title="Delete Milestone">\uD83D\uDDD1\uFE0F</button>
       `;
 
       const checkEl = row.querySelector('.pd-task-check');

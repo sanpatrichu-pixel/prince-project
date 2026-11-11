@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
       resetAllErrors();
 
       if (window.displayToast) {
-        window.displayToast('Inquiry delivered successfully to Prince Daniel! 📨', 'success');
+        window.displayToast('Inquiry delivered successfully to Prince Daniel! \uD83D\uDCE8', 'success');
       }
     } else {
       const firstFault = portalForm.querySelector('.is-invalid');

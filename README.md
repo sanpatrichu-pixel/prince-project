@@ -1,6 +1,6 @@
 # prince-cos106-portfolio
 
-## COS 106: Introduction to Web Technologies &mdash; Practical Term Project (20 Marks)
+## COS 106: Introduction to Web Technologies &mdash; Practical Term Project
 ### Project Title: Responsive Student Academic Portfolio & Academic Workload Management Architecture
 
 **Student Information:**
@@ -12,7 +12,6 @@
 - **Institution:** MIVA Open University, Abuja, Nigeria
 - **Email:** `p.daniel7306@miva.edu.ng`
 - **Phone:** `+234 811 676 1295`
-- **Assessment Target:** 20 / 20 Marks
 
 ---
 
@@ -26,7 +25,7 @@ This project is an accessible, multi-page responsive academic portfolio and inte
 1. **Homepage (`index.html`)**:
    - Asymmetric layout with the official student portrait card (`portrait.jpg`) positioned on the **LEFT SIDE**.
    - Executive welcome narrative and focus on mobile systems and security.
-   - Sticky navigation bar with custom SVG University Crest (`[M] MIVA SCHOLAR`) and Dark/Light theme toggle.
+   - Sticky navigation bar with Prince Daniel's portrait avatar and Dark/Light theme toggle.
    - 4 Academic KPI metric highlights: 4.80/5.00 GPA target, 8 Enrolled Courses, 100 Level standing, and 4 Active Projects.
    - Featured projects showcase cards (UniRide, DevPulse, EduTrack).
 

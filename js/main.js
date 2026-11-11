@@ -12,20 +12,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (storedTheme === 'dark') {
     document.body.classList.add('dark-mode');
-    if (themeSwitchBtn) themeSwitchBtn.textContent = '☀️';
+    if (themeSwitchBtn) themeSwitchBtn.textContent = '\u2600\uFE0F';
   } else {
     document.body.classList.remove('dark-mode');
-    if (themeSwitchBtn) themeSwitchBtn.textContent = '🌙';
+    if (themeSwitchBtn) themeSwitchBtn.textContent = '\uD83C\uDF19';
   }
 
   if (themeSwitchBtn) {
     themeSwitchBtn.addEventListener('click', () => {
       document.body.classList.toggle('dark-mode');
       const isDark = document.body.classList.contains('dark-mode');
-      themeSwitchBtn.textContent = isDark ? '☀️' : '🌙';
+      themeSwitchBtn.textContent = isDark ? '\u2600\uFE0F' : '\uD83C\uDF19';
       localStorage.setItem('edutrack_theme_mode', isDark ? 'dark' : 'light');
       if (window.displayToast) {
-        window.displayToast(isDark ? 'Royal Dark Theme Activated 🌙' : 'Clean Light Theme Activated ☀️', 'info');
+        window.displayToast(isDark ? 'Royal Dark Theme Activated \uD83C\uDF19' : 'Clean Light Theme Activated \u2600\uFE0F', 'info');
       }
     });
   }
@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (alertType === 'success') toastCard.style.borderLeftColor = '#0284C7';
     if (alertType === 'danger') toastCard.style.borderLeftColor = '#DC2626';
 
-    toastCard.innerHTML = `<span>ℹ️</span> <span>${msg}</span>`;
+    toastCard.innerHTML = `<span>\u2139\uFE0F</span> <span>${msg}</span>`;
     toastShelf.appendChild(toastCard);
 
     setTimeout(() => {
