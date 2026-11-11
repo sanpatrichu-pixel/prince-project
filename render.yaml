@@ -1,6 +1,36 @@
 services:
   - type: web
-    name: prince-miva-portfolio
-    env: static
+    name: prince-project
+    runtime: static
+    buildCommand: ""
     staticPublishPath: .
-
+    pullRequestPreviewsEnabled: true
+    headers:
+      - path: /*
+        name: X-Frame-Options
+        value: SAMEORIGIN
+      - path: /*
+        name: X-Content-Type-Options
+        value: nosniff
+      - path: /*
+        name: Referrer-Policy
+        value: strict-origin-when-cross-origin
+    routes:
+      - type: rewrite
+        source: /home
+        destination: /index.html
+      - type: rewrite
+        source: /about
+        destination: /about.html
+      - type: rewrite
+        source: /projects
+        destination: /projects.html
+      - type: rewrite
+        source: /planner
+        destination: /planner.html
+      - type: rewrite
+        source: /contact
+        destination: /contact.html
+      - type: rewrite
+        source: /report
+        destination: /report.html
