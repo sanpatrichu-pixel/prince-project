@@ -30,13 +30,56 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // Mobile Sidebar Drawer Controller
+  const menuTrigger = document.getElementById('mobileMenuTrigger');
+  const sidebarEl = document.getElementById('mobileSidebar');
+  const sidebarCloseBtn = document.getElementById('mobileSidebarClose');
+  const sidebarBackdrop = document.getElementById('mobileSidebarBackdrop');
+
+  function setSidebarOpen(open) {
+    if (!sidebarEl || !sidebarBackdrop) return;
+    sidebarEl.classList.toggle('is-open', open);
+    sidebarBackdrop.classList.toggle('is-open', open);
+    sidebarEl.setAttribute('aria-hidden', open ? 'false' : 'true');
+    if (menuTrigger) menuTrigger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    document.body.style.overflow = open ? 'hidden' : '';
+  }
+
+  if (menuTrigger && sidebarEl) {
+    menuTrigger.addEventListener('click', () => {
+      const nextOpen = !sidebarEl.classList.contains('is-open');
+      setSidebarOpen(nextOpen);
+    });
+  }
+  if (sidebarCloseBtn) {
+    sidebarCloseBtn.addEventListener('click', () => setSidebarOpen(false));
+  }
+  if (sidebarBackdrop) {
+    sidebarBackdrop.addEventListener('click', () => setSidebarOpen(false));
+  }
+  if (sidebarEl) {
+    sidebarEl.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => setSidebarOpen(false));
+    });
+  }
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && sidebarEl && sidebarEl.classList.contains('is-open')) {
+      setSidebarOpen(false);
+    }
+  });
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 768 && sidebarEl && sidebarEl.classList.contains('is-open')) {
+      setSidebarOpen(false);
+    }
+  });
+
   // Toast Notification Hub
   window.displayToast = function(msg, alertType = 'info') {
     let toastShelf = document.querySelector('.pd-toast-shelf');
     if (!toastShelf) {
       toastShelf = document.createElement('div');
       toastShelf.className = 'pd-toast-shelf';
-      toastShelf.style.cssText = 'position:fixed; bottom:75px; right:16px; left:16px; pointer-events:none; z-index:99999; display:flex; flex-direction:column; align-items:flex-end; gap:8px;';
+      toastShelf.style.cssText = 'position:fixed; bottom:20px; right:16px; left:16px; pointer-events:none; z-index:99999; display:flex; flex-direction:column; align-items:flex-end; gap:8px;';
       document.body.appendChild(toastShelf);
     }
 
